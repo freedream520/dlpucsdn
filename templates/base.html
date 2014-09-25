@@ -10,7 +10,7 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<div style="border-bottom: 1px solid #dcdcdc;padding-left: 50px;padding-right: 50px;">
+<div style="border-bottom: 1px solid #dcdcdc;padding-left: 10%;padding-right:20%;">
     <div class="navbar-header">
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"></button>
         <span class="sr-only">Toggle navigation</span>
@@ -21,23 +21,31 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
-            <li class="{{ zuoye }}"><a href="">作业</a></li>
-            <li class="{{ luntan }}"><a href="">论坛</a></li>
-            <li class="{{ toutiao }}"><a href="">头条</a></li>
-            <li class="{{ blog }}"><a href="">博客</a></li>
-            <li class="{{ keyan }}"><a href="">科研</a></li>
+            <li class=""><a href="">作业</a></li>
+            <li class=""><a href="">论坛</a></li>
+            <li class=""><a href="">头条</a></li>
+            <li class=""><a href="">博客</a></li>
+            <li class=""><a href="">科研</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="{{ login }}"><a href="../login">登录</a></li>
-            <li class="{{ signup }}"><a href="../signup">注册</a></li>
-        </ul>
+        {% if login %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="">{{ username }}</a></li>
+            </ul>
+        {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="../login">登录</a></li>
+                <li class=""><a href="../signup">注册</a></li>
+            </ul>
+        {% endif %}
     </nav>
 </div>
-
+{% block login %}{% endblock %}
+{% block signup %}{% endblock %}
 {% block pitch %}{% endblock %}
 {% block main %}{% endblock %}
+{% block panel %}{% endblock %}
 
-<footer style="border-top: 1px solid #dcdcdc;padding: 10px;">
+<footer style="border-top: 1px solid #dcdcdc;padding: 10px;margin-top: 10%">
     <div class="container">
 	<div class="pull-left">
 			&copy;dlpucsdn.com 2013-2014

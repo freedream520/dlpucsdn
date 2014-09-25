@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-{% block main %}
-    <form action="" method="post">
-        <div><label for="username"></label><input type="text" name="username"></div>
-        <div><label for="number"></label><input type="number" name="number"></div>
-        <div><label for="password"></label><input type="password" name="password" ></div>
-        <div><input type="submit" value="submit" name="submit"></div>
+{% block signup %}
+ <div style="width: 400px;margin-left: auto;margin-right: auto;margin-top: 5%;margin-bottom: 20%;margin-top: 10%">
+    <form class="form-horizontal" role="form" method="post" action="">
+        {% csrf_token %}
+        <p><input type="text" class="form-control" placeholder="用户名" name="username"></p>
+        <p><input type="number" class="form-control" placeholder="学号" name="number"></p>
+        <p><input type="password" class="form-control" placeholder="设置密码" name="password1"></p>
+        <p><input type="password" class="form-control" placeholder="确认密码" name="password2"></p>
+        <label id="lable"><input type="checkbox" value="remember-me"> Remember me</label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
-    {{ hello }}
+ </div>
 {% endblock %}

@@ -6,35 +6,51 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from account.models import Profile
 from django.template import RequestContext
+from django.contrib import messages
+from django.core.urlresolvers import reverse
 # Create your views here.
 
 def user_login(request):
     if request.method=='GET':
-        return render_to_response('account/login.html',{'hello':'get method'},
+        return render_to_response('account/login.html',
                                   context_instance=RequestContext(request))
     elif request.method=='POST':
         username = request.POST['username']
         password = request.POST['password']
+        u = authenticate(username=username,password=password)
+        if not User.objects.filter(username=username).exists():
+            messages.add_message(request,messages.WARNING,'username is not exist')
+            return render_to_response('index.html',{'login':False},
+                                      context_instance=RequestContext(request))
+        elif not u:
+            messages.add_message(request,messages.WARNING,'password is invalid')
+            return render_to_response('account/login.html',
+                                      context_instance=RequestContext(request))
+        return render_to_response('index.html',{'username':username,'login':True},
+                                  context_instance=RequestContext(request))
+
+def user_signup(request):
+    if request.method == 'GET':
+        return render_to_response('account/signup.html',
+                                  context_instance=RequestContext(request))
+    elif request.method =='POST':
+        username = request.POST['username']
         number = request.POST['number']
-        user = User.objects.create_user(username=username,password=password)
-        user = authenticate(username=username,password=password)
-        login(request,user)
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1==password2:
+            user = User.objects.create_user(username=username,password=password1)
+            u = authenticate(username = username,password = password1)
+        else:
+            return render_to_response('account/login.html',
+                                      context_instance=RequestContext(request))
+        login(request,u)
         p = Profile()
         p.number = number
         p.user = user
         p.save()
-        login(request,user)
-        return render_to_response('index.html',{'login':'login!!!'},
+        return render_to_response('index.html',{'username':username,'login':True},
                                   context_instance=RequestContext(request))
 
-
-def user_signup(request):
-    if request.method == 'GET':
-        return render_to_response('account/signup.html',{'hello':'hellooooo'})
-    elif request.method =='POST':
-        username = request.POST.get('username')
-        number = request.POST.get('number')
-        password = request.POST.get('password')
-        user = Profile(username=username,number=number,password=password)
-        user.save()
-        return render_to_response('home/index.html',{'username':username,'number':number,'password':password})
+def index(request):
+    return render_to_response('index.html')
