@@ -36,11 +36,12 @@ def user_signup(request):
     elif request.method =='POST':
         username = request.POST['username']
         number = request.POST['number']
+        email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         if password1==password2:
             user = User.objects.create_user(username=username,password=password1)
-            u = authenticate(username = username,password = password1)
+            u = authenticate(username = username,password = password1,email = email)
         else:
             return render_to_response('account/login.html',
                                       context_instance=RequestContext(request))
