@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock %}
 {% block pitch %}
     {% include 'pitch.html' %}
 {% endblock %}
-{% block main %}
+{% block news %}
+    {% include 'news/news.html' %}
 {% endblock %}
-{% block panel %}
-    {% include 'panel.html' %}
-{% endblock %}
+

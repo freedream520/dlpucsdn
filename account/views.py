@@ -28,7 +28,6 @@ def user_login(request):
                                       context_instance=RequestContext(request))
         return render_to_response('index.html',{'username':username,'login':True},
                                   context_instance=RequestContext(request))
-
 def user_signup(request):
     if request.method == 'GET':
         return render_to_response('account/signup.html',
@@ -40,7 +39,7 @@ def user_signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         if password1==password2:
-            user = User.objects.create_user(username=username,password=password1)
+            user = User.objects.create_user(username=username,password=password1,email=email)
             u = authenticate(username = username,password = password1,email = email)
         else:
             return render_to_response('account/login.html',
@@ -50,8 +49,7 @@ def user_signup(request):
         p.number = number
         p.user = user
         p.save()
-        return render_to_response('index.html',{'username':username,'login':True},
+        return render_to_response('index.html',
                                   context_instance=RequestContext(request))
-
 def index(request):
     return render_to_response('index.html')

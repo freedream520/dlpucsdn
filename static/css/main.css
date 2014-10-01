@@ -1,14 +1,7 @@
 #pitch {
-  height: 400px;
-  background: url(/static/images/pitch/bg.jpg);
+  background: url(/static/images/pitch/sunset.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
   position: relative;
-}
-/*图中字体位置*/
-#pitch .jumbotron{
-  color: #ffffff;
-  padding-left: 10%;
-  padding-top: 100px;
+  text-align: center;
 }
