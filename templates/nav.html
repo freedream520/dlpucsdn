@@ -1,7 +1,8 @@
 <header class="navbar navbar-default navbar-static-top" role="banner" style="border-bottom: 1px solid #dcdcdc;">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                    data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -11,18 +12,31 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" id="top" role="navigation">
             <ul class="nav navbar-nav">
-                <li class=""><a href="../">作业</a></li>
-                <li class=""><a href="../forum">论坛</a></li>
-                <li class=""><a href="../news">头条</a></li>
-                <li class=""><a href="../blog">博客</a></li>
-                <li class=""><a href="../science">科研</a></li>
+                <li class=""><a href="{% url 'assignment' %}">作业</a></li>
+                <li class=""><a href="{% url 'forum' %}">论坛</a></li>
+                <li class=""><a href="{% url 'news' %}">新闻</a></li>
+                <li class=""><a href="{% url 'blog' %}">博客</a></li>
+                <li class=""><a href="{% url 'research' %}">科研</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if login %}
-                    <li class=""><a href="">{{ username }}</a></li>
+                    <li><a href="#">Inbox <span class="badge">42</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
                 {% else %}
                     <li class=""><a href="../login">登录</a></li>
                     <li class=""><a href="../signup">注册</a></li>
+
                 {% endif %}
             </ul>
         </nav>

@@ -53,3 +53,6 @@ def user_signup(request):
                                   context_instance=RequestContext(request))
 def index(request):
     return render_to_response('index.html')
+
+def about(request):
+    return render_to_response('about.html')

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block nav %}{% include 'nav.html' %}{% endblock %}
+{% block blog %}
+    <div class="container" style="margin-top: 20px">
+        <div class="col-md-8">
+            <div>
+                <div class="jumbotron" style="background-color: #99CC99;text-align: center">
+                    <h2><a href="{% url 'write' %}">Write the blog</a> , to be a better man</h2>
+                </div>
+            </div>
+            <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">
+                <h4 style="margin-top: 10px"><a href="">我的第一篇博客</a></h4>
+
+                <p>我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客</p>
+
+                <div style="margin-top: -5px"><span>来自<a
+                        href="">author</a></span><span> time </span><span>评论数</span></div>
+            </div>
+            <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">
+                <h4 style="margin-top: 10px"><a href="">我的第一篇博客</a></h4>
+
+                <p>我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客</p>
+
+                <div style="margin-top: -5px"><span>来自<a
+                        href="">author</a></span><span> time </span><span>评论数</span></div>
+            </div>
+            <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">
+                <h4 style="margin-top: 10px"><a href="">我的第一篇博客</a></h4>
+
+                <p>我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客</p>
+
+                <div style="margin-top: -5px"><span>来自<a
+                        href="">author</a></span><span> time </span><span>评论数</span></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    标签
+                </div>
+                <div class="panel-body">
+                    <a href="" class="label label-default">CS</a>
+                    <a href="" class="label label-default">CS</a>
+                    <a href="" class="label label-default">CS</a>
+                    <a href="" class="label label-default">CS</a>
+                </div>
+            </div>
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    点击量排行榜
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="">最近的主题，python标最近的主题，python标准库最近的主题，python标准库最近的主题，python标准库最近的主题，python标准库最近的主题，python标准库准库</a>
+                    </li>
+                    <li class="list-group-item"><a href="">最近的主题，python标准库</a></li>
+                    <li class="list-group-item"><a href="">最近的主题，python标准库</a></li>
+                    <li class="list-group-item"><a href="">最近的主题，python标准库</a></li>
+                    <li class="list-group-item"><a href="">最近的主题，python标准库</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
