@@ -1,7 +1,36 @@
 #pitch {
-  background: url(/static/images/pitch/sunset.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  text-align: center;
+    background: url(/static/images/pitch/sunset.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+}
+
+#top {
+    background-color: transparent;
+}
+
+#top a {
+    color: #428bca;
+}
+
+#top a:hover {
+    background-color: #f8f8f8;
+}
+
+#count {
+    color: #ffffff;
+    background-color: #c0c0c0;
+    padding: 4px;
+    margin-top: 5px;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    border-radius: 0.5em;
+}
+#count a{
+    cursor: pointer;
+}
+
+#count a:hover {
+    text-decoration: none;
 }

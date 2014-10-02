@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock %}
+{% block news %}
+    <div class="container" style="margin-top: 20px;">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span style="font-size: 18px">Hacker News</span>
+                    <a href="../news/add" class="btn btn-success btn-sm pull-right" style="margin-top: -2px">Add</a>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">testsetstsstttestet<span class="badge">14</span><span class="badge">by tcitry</span></a>
+                    <a href="#" class="list-group-item">testsetstsstttestet<span class="badge">14</span><span class="badge">by tcitry</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

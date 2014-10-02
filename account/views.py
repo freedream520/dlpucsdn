@@ -4,7 +4,7 @@ from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
-from account.models import Profile
+from account.models import profile
 from django.template import RequestContext
 from django.contrib import messages
 from django.core.urlresolvers import reverse
@@ -45,7 +45,7 @@ def user_signup(request):
             return render_to_response('account/login.html',
                                       context_instance=RequestContext(request))
         login(request,u)
-        p = Profile()
+        p = profile()
         p.number = number
         p.user = user
         p.save()

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'account',
     'news',
     'forum',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,6 +90,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT = '/Library/Python/2.7/site-packages/Django-1.7-py2.7.egg/django/__init__.pyc'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

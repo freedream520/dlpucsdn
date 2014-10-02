@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('',
-    url(r'^add')
+urlpatterns = patterns('news.views',
+    url(r'^$','news_list'),
+    url(r'add/','add_news'),
 )
