@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block nav %}{% include 'navbar.html' %}{% endblock %}
+{% block forum %}
+    <div class="container" style="margin-top: 20px">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        {{ topics.title }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-2 col-xs-2 col-md-1" style="text-align: center">
+                                    <a href="" class="">
+                                        <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
+                                             class="img-circle">
+                                    </a>
+                                    {{ topics.auth }}
+                                </div>
+                                <div class="col-sm-8 col-xs-8 col-md-9" style="margin-left: 5px">
+                                    <div></div>
+                                    <div style="margin-top: 10px">
+                                        <span><a href=""></a></span><span>创建于</span><span>{{ t.time_created }}</span>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-2 col-xs-2 col-md-1" style="text-align: center">
+                                    <a href="" class="">
+                                        <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
+                                             class="img-circle">
+                                    </a>
+                                    {{ topics.auth }}
+                                </div>
+                                <div class="col-sm-8 col-xs-8 col-md-9" style="margin-left: 5px">
+                                    <div></div>
+                                    <div style="margin-top: 10px">
+                                        <span><a href=""></a></span><span>创建于</span><span>{{ t.time_created }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

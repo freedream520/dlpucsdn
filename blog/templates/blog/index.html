@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block nav %}{% include 'nav.html' %}{% endblock %}
+{% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block blog %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8">
             <div>
                 <div class="jumbotron" style="background-color: #99CC99;text-align: center">
-                    <h2><a href="{% url 'write' %}">Write the blog</a> , to be a better man</h2>
+                    <h2><a href="{% url 'write_blog' dn %}">Write the blog</a> , to be a better man</h2>
                 </div>
             </div>
             <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">

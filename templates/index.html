@@ -5,3 +5,31 @@
 {% block pitch %}
     {% include 'pitch.html' %}
 {% endblock %}
+{% block main %}
+    <div class="container" style="margin-top: 20px">
+        <div class="col-md-8">
+            <div class="alert alert-success" role="alert" style="margin-top: 20px">
+                <p>你好，DlpuCsdn正在内测阶段，目前针对计算机专业开放作业查询功能，更多精彩敬请期待！</p>
+            </div>
+
+            <div class="list-group">
+                <div class="list-group-item">
+                    <span class="label label-danger" style="padding: 8px">信院</span>
+                    <a href="../cs" class="btn btn-success">计算机</a>
+                    <a href="../test" class="btn btn-success">测试</a>
+                </div>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <p>将你的建议或发现的bug提交至<a href="https://github.com/tcitry/dlpucsdn/issues" target="_blank">这里</a>，谢谢
+                </p>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="panel-body" style="text-align: center">
+                <img src="../static/images/qrcode.jpg" class="img-thumbnail">
+            </div>
+        </div>
+    </div>
+{% endblock %}

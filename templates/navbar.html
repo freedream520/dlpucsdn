@@ -12,13 +12,17 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" id="top" role="navigation">
             <ul class="nav navbar-nav">
-                <li class=""><a href="{% url 'assignment' %}">作业</a></li>
+                <li class=""><a href="{% url 'news_index' dn %}">{{ department }}</a></li>
+                <li class=""><a href="{% url 'forum_index' dn %}">论坛</a></li>
+                <li class=""><a href="{% url 'blog_index' dn %}">博客</a></li>
+                <li class=""><a href="{% url 'research_index' dn %}">科研</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li><a href="#">Inbox <span class="badge">42</span></a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span
+                                class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
