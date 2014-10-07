@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from news.models import list
 from account.models import department
 from django.core.urlresolvers import reverse
+from news.models import list
 
 def add_news(request,dn):
     d = department.objects.get(name = dn)
@@ -39,5 +40,13 @@ def news_index(request,dn):
                                                     'news':news,
                                                     'department':d.cn},
                                   context_instance = RequestContext(request))
+
+def news_count(request,dn,id):
+    n = list.objects.get(id = id)
+    n.click += 1
+    url = n.url
+    n.save()
+    return HttpResponseRedirect(url)
+
 
 

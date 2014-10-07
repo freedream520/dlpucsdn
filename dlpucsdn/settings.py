@@ -26,7 +26,15 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ADMINS = (
+    ('tcitry', 'tcitry@gmail.com'),
+)
 
+SEND_BROKEN_LINK_EMAILS = True
+
+MANAGERS = (
+    ('tcitry', 'tcitry@gmail.com'),
+)
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'account',
     'news',
     'forum',
@@ -79,7 +88,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'cn-Zh'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

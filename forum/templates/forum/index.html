@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block forum %}
     <div class="container" style="margin-top: 20px">
@@ -12,19 +13,19 @@
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
-                                <a href="" class="col-sm-2 col-xs-2 col-md-1">
+                                <a href="" class="col-sm-1 col-xs-2 col-md-1">
                                     <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
                                          class="img-circle">
                                 </a>
 
-                                <div class="col-sm-8 col-xs-8 col-md-9" style="margin-left: 5px">
+                                <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px">
                                     <div><a style="font-size: 18px" href="{{ t.id }}">{{ t.title }}</a></div>
                                     <div style="margin-top: 10px">
-                                        <span><a href="">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created }} </span><span>有({{ t.reply_count }})条评论</span>
+                                        <span ><a href="" style="text-decoration: none">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created | naturaltime }} </span><span>有({{ t.reply_count }})条评论</span>
                                     </div>
                                 </div>
                                 <div class="pull-right" style="margin-right: 10px;margin-top: 10px">
-                                    <label id="count">{{ t.click }}</label>
+                                    <label class="label label-info">{{ t.click }}</label>
                                 </div>
                             </div>
                         </li>

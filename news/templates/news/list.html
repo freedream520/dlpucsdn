@@ -14,9 +14,9 @@
                     </div>
                     <div class="list-group">
                         {% for n in news %}
-                            <a href="{{ n.url }}" target="_blank" class="list-group-item">{{ n.title }}<span
-                                    class="label label-info pull-right"
-                                    style="padding: 4px">{{ n.click }}</span></a>
+                            <a href="{{ n.id }}" target="_blank" class="list-group-item">{{ n.title }}<span class="pull-right"><span id="count">{{ n.auth }}</span><span
+                                    class="label label-info"
+                                    style="padding: 4px;margin-left: 10px">{{ n.click }}</span></span></a>
                         {% endfor %}
                     </div>
                 </div>
