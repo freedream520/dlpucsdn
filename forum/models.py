@@ -7,7 +7,7 @@ class topic(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=1000)
     click = models.IntegerField(default=0)
-    reply_count = models.IntegerField(default=0,blank=True)
+    reply_count = models.IntegerField(default=0)
     time_created = models.DateTimeField(auto_now_add=True)
     last_replied = models.DateTimeField(auto_now_add=True,editable=True)
     deleted = models.BooleanField(default=False)

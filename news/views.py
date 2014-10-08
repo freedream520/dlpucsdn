@@ -29,6 +29,7 @@ def add_news(request,dn):
             return HttpResponse('blank')
     return HttpResponseRedirect(reverse('news_index',kwargs={'dn':dn}))
 
+
 def news_index(request,dn):
     if department.objects.filter(name = dn).exists():
         d = department.objects.get(name = dn)

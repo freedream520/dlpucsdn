@@ -62,7 +62,11 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def index(request):
-    return render_to_response('index.html',{'user':request.user})
+    return render_to_response('index.html',{'user':request.user,
+                                            })
 
 def about(request):
-    return render_to_response('about.html')
+    return render_to_response('about.html',)
+
+def user_profile(request):
+    return render_to_response('account/user.html',)

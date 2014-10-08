@@ -2,19 +2,16 @@
 {% block nav %}
     {% include 'navbar.html' %}
 {% endblock %}
-{% block forum %}
+{% block main %}
     <div class="container" style="margin-top: 20px">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span style="font-size: 18px">创建一个新的主题</span>
-                </div>
+        <div class="col-md-9">
+
                 <div class="panel-body">
                     <form role="form" method="post" action="">
                         {% csrf_token %}
                         <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
 
-                        <p><textarea id="editor" placeholder="内容" class="form-control" name="content" rows="10"></textarea></p>
+                        <p><textarea id="editor" placeholder="内容" class="form-control" name="content"></textarea></p>
 
                         <p class="pull-right">
                             <a href="{% url 'forum_index' dn %}" class="btn btn-warning">返回</a>
@@ -23,8 +20,11 @@
                         </p>
                     </form>
                 </div>
-            </div>
         </div>
-
     </div>
+    <script>
+    var editor = new Simditor({
+    textarea: $('#editor')
+    });
+    </script>
 {% endblock %}

@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'dlpucsdndb',
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
     }
 }
 

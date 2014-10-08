@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
-{% block forum %}
+{% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-8">
@@ -10,30 +10,30 @@
                     <div class="list-group-item">
 
                         <div class="row">
-                            <div class="col-md-10 col-sm-9 col-xs-9">
+                            <div class="col-md-11 col-sm-10 col-xs-10">
                                 <div class="text-info"
                                      style="font-size: 25px;border-bottom: 1px #dcdcdc solid;padding-bottom: 10px">{{ topics.title }}</div>
 
                             </div>
-                            <div class="col-md-1 col-sm-2 col-xs-2">
-                                <a href="" class="col-sm-2 col-xs-2 col-md-1">
+                            <div class="pull-right" style="margin-right: 10px">
+                                <a href="">
                                     <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
                                          class="img-circle">
                                 </a>
                             </div>
                         </div>
+                        <div style="margin-top: 10px;font-size: 16px">{{ topics.content | safe }}</div>
 
-
-                        <div style="margin-top: 10px;" id="top">{{ topics.content }}</div>
-
-                        <a href="" class="label label-primary" style="">{{ topics.auth }}</a>
-                        <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
-                            class="label label-default">点击({{ topics.click }}) </span> <span
-                            class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
-                        {% if topics.auth == request.user %}
-                            <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
-                                    class="label label-danger">delete</span></a>
-                        {% endif %}
+                        <div style="margin-top: 30px">
+                            <a href="" class="label label-primary" style="">{{ topics.auth }}</a>
+                            <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
+                                class="label label-default">点击({{ topics.click }}) </span> <span
+                                class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
+                            {% if topics.auth == request.user %}
+                                <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
+                                        class="label label-danger">delete</span></a>
+                            {% endif %}
+                        </div>
 
                     </div>
                 </div>
@@ -53,8 +53,8 @@
                                              class="img-circle">
                                     </a>
 
-                                    <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px">
-                                        {{ r.content }}
+                                    <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
+                                        {{ r.content | safe }}
                                         <div style="margin-top: 30px">
                                             <span id="count"><a href="{{ r.auth }}">{{ r.auth }}</a></span><span
                                                 id="count"
@@ -73,14 +73,16 @@
                 <div class="list-group">
                     <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
                         {% csrf_token %}
-                        <textarea placeholder="" rows="4" name="reply" class="form-control"></textarea>
+                        <textarea placeholder="评论" name="reply" class="form-control" id="editor"></textarea>
                         <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px">提交</button>
                     </form>
                 </div>
-
-
             </div>
         </div>
     </div>
-
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor')
+        });
+    </script>
 {% endblock %}

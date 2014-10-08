@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
-{% block research %}
+{% block main %}
     <p>research</p>
     {% if user.is_authenticated %}
         <p>hello {{ user.username }}</p>

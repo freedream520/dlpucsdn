@@ -13,6 +13,7 @@ urlpatterns = patterns('',
                        url(r'^about/$', 'account.views.about', name='about'),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^assignment/', include('assignment.urls')),
+                       # url(r'^user/(?P<user_id>\d+)/$','account.views.user_profile'),
 
                        url(r'^(?P<dn>\w+)/research/', include('research.urls')),
                        url(r'^(?P<dn>\w+)/blog/', include('blog.urls')),
