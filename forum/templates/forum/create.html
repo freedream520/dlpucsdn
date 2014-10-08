@@ -14,8 +14,7 @@
                         {% csrf_token %}
                         <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
 
-                        <p><textarea id="editor" placeholder="内容" class="form-control" name="content"
-                                     rows="10"></textarea></p>
+                        <p><textarea id="editor" placeholder="内容" class="form-control" name="content" rows="10"></textarea></p>
 
                         <p class="pull-right">
                             <a href="{% url 'forum_index' dn %}" class="btn btn-warning">返回</a>
@@ -26,10 +25,6 @@
                 </div>
             </div>
         </div>
-<script>
-    var editor = new Simditor({
-        textarea: $('#editor')
-    });
-</script>
+
     </div>
 {% endblock %}

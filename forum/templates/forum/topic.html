@@ -24,7 +24,7 @@
                         </div>
 
 
-                            <p style="margin-top: 10px;font-size: 20px" id="topics">{{ topics.content }}</p>
+                        <div style="margin-top: 10px;" id="top">{{ topics.content }}</div>
 
                         <a href="" class="label label-primary" style="">{{ topics.auth }}</a>
                         <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
@@ -45,7 +45,7 @@
 
                     </div>
                     <ul class="list-group">
-                        {% for r in reply%}
+                        {% for r in reply %}
                             <div class="list-group-item">
                                 <div class="row">
                                     <a href="" class="col-sm-2 col-xs-2 col-md-1">
@@ -56,7 +56,9 @@
                                     <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px">
                                         {{ r.content }}
                                         <div style="margin-top: 30px">
-                                            <span id="count"><a href="{{ r.auth }}">{{ r.auth }}</a></span><span id="count" style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
+                                            <span id="count"><a href="{{ r.auth }}">{{ r.auth }}</a></span><span
+                                                id="count"
+                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
                                         </div>
                                     </div>
                                     <div class="pull-right" style="margin-right: 10px;margin-top: 10px">
@@ -80,4 +82,10 @@
             </div>
         </div>
     </div>
+    <script>
+        var top = new Simditor({
+            div: $('#top')
+        });
+        top.getValue()
+    </script>
 {% endblock %}
