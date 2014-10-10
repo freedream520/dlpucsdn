@@ -8,8 +8,22 @@
                 <div class="panel panel-default ">
                     <div class="panel-body">
                         <div>
-                            <div style="margin: 10px;width: 90%">
-                                <h3 style="border-bottom: 2px #0F769F solid;padding-bottom: 10px">{{ blog.title }}</h3>
+                            <div style="margin: 10px;width: 90%;border-bottom: 2px blueviolet solid">
+                                <h3 style="">{{ blog.title }}</h3>
+
+                                <div style="margin-top: 20px;padding-bottom: 10px">
+                                    <a href="" class="label label-primary" style="">{{ blog.auth }}</a>
+                                    <span class="label label-info">{{ blog.time_created | naturaltime }}</span> <span
+                                        class="label label-default">点击({{ blog.click }}) </span> <span
+                                        class="label label-default"
+                                        style="margin-left: 5px">评论({{ blog.reply_count }})</span>
+                                    {% if blog.auth == request.user %}
+                                        <a href="" style="text-decoration: none"><span
+                                                class="label label-success">编辑</span></a>
+                                        <a href="" style="text-decoration: none"><span
+                                                class="label label-danger">delete</span></a>
+                                    {% endif %}
+                                </div>
                             </div>
                             <div style="margin: 30px 10px 20px 10px">
                                 {{ blog.content | safe }}
@@ -24,35 +38,35 @@
                     <div class="list-group">
                         {% for br in breply %}
                             <div class="list-group-item">
-                            <div class="row">
-                                <a href="" class="col-sm-1 col-xs-2 col-md-1">
-                                    <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
-                                         class="img-circle">
-                                </a>
+                                <div class="row">
+                                    <a href="" class="col-sm-1 col-xs-2 col-md-1">
+                                        <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
+                                             class="img-circle">
+                                    </a>
 
-                                <div class="col-sm-10 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
-                                    {{ br.content | safe }}
-                                    <div style="margin-top: 30px">
-                                        <span id="count"><a href="">{{ br.auth }}</a></span><span
-                                            id="count"
-                                            style="margin-left: 5px">{{ br.time_created | naturaltime }}</span>
+                                    <div class="col-sm-10 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
+                                        {{ br.content | safe }}
+                                        <div style="margin-top: 30px">
+                                            <span id="count"><a href="">{{ br.auth }}</a></span><span
+                                                id="count"
+                                                style="margin-left: 5px">{{ br.time_created | naturaltime }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         {% endfor %}
 
+                    </div>
+                </div>
+                <div class="list-group ">
+                    <form role="form" method="post" action="{% url 'create_breply' dn blog_id %}">
+                        {% csrf_token %}
+                        <textarea placeholder="评论" name="content" class="form-control" id="editor"></textarea>
+                        <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px">提交</button>
+                    </form>
                 </div>
             </div>
-            <div class="list-group ">
-                <form role="form" method="post" action="{% url 'create_breply' dn blog_id %}">
-                    {% csrf_token %}
-                    <textarea placeholder="评论" name="content" class="form-control" id="editor"></textarea>
-                    <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px">提交</button>
-                </form>
-            </div>
         </div>
-    </div>
     </div>
     <script>
         var editor = new Simditor({

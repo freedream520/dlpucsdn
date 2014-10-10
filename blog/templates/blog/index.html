@@ -13,9 +13,9 @@
                 <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">
                     <h4 style="margin-top: 10px"><a href="{{ b.id }}">{{ b.title }}</a></h4>
 
-                    <p>我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客我的第一篇博客</p>
+                    <p>{{ b.content | truncatechars_html:100 | safe }}</p>
 
-                    <div style="margin-top: -5px"><span><a id="count" href="" style="text-decoration: none">{{ b.auth }}</a></span><span> 创建于 {{ b.time_created | date }} </span><span>评论({{ b.reply_count }}) 点击({{ b.click }})</span></div>
+                    <div style="margin-top: -5px"><span><a id="count" href="" style="text-decoration: none">{{ b.auth }}</a></span><span> 发表于 {{ b.time_created | date }} </span><span>评论({{ b.reply_count }}) 点击({{ b.click }})</span></div>
                 </div>
             {% endfor %}
 

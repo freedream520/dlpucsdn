@@ -30,6 +30,8 @@
                                 class="label label-default">点击({{ topics.click }}) </span> <span
                                 class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
                             {% if topics.auth == request.user %}
+                                <a href="" style="text-decoration: none"><span
+                                                class="label label-success">编辑</span></a>
                                 <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
                                         class="label label-danger">delete</span></a>
                             {% endif %}

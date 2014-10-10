@@ -24,13 +24,14 @@ def write_blog(request,dn):
         return HttpResponseRedirect(reverse('blog_index',kwargs={'dn':dn}))
 
 def blog_view(request,dn,blog_id):
-    d = department.objects.get(name = dn)
-    b = blogs.objects.get(id = blog_id)
+    d = department.objects.get(name=dn)
+    b = blogs.objects.get(id=blog_id)
     b.click += 1
     b.save()
-    br = breply.objects.filter(topic = blog_id)
+    br = breply.objects.filter(topic=blog_id)
     return render_to_response('blog/view.html',{'user':request.user,
                                                 'blog':b,
+                                                'request':request,
                                                 'dn':dn,
                                                 'breply':br,
                                                 'blog_id':blog_id,
