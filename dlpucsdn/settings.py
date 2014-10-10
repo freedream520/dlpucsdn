@@ -22,10 +22,10 @@ SECRET_KEY = '765q#l*2l%pf=0sq7nowe=bm1+m4^@5spyq=nh%%xyh5fts7(%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [
-    '.dlpucsdn.com',
+    'dlpucsdn.com',
 ]
 
 ADMINS = (
@@ -115,3 +115,13 @@ TEMPLATE_DIRS = (
 )
 
 # SESSION_SAVE_EVERY_REQUEST = True
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = ''
+EMAIL_PORT = 465
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
