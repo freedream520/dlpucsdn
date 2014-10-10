@@ -24,7 +24,9 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.dlpucsdn.com',
+]
 
 ADMINS = (
     ('tcitry', 'tcitry@gmail.com'),
@@ -80,7 +82,6 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',
-        'PORT': '8000',
     }
 }
 
