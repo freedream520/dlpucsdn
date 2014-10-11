@@ -23,12 +23,10 @@
                         <a href="#">{{ user.username }} <span class="badge">42</span></a>
                     </li>
                     <li class="">
-                        <a href="{% url 'logout' %}">退出</a>
+                        <a href="{% url 'logout' %}"><img src="/static/images/logout.png"></a>
                     </li>
                 {% else %}
                     <li class=""><a href="{% url 'login' %}">登录</a></li>
-                    <li class=""><a href="{% url 'signup' %}">注册</a></li>
-
                 {% endif %}
             </ul>
         </nav>

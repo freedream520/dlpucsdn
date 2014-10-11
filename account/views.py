@@ -54,8 +54,7 @@ def user_signup(request):
         p.number = number
         p.user = user
         p.save()
-        return render_to_response('index.html',{'username':username},
-                                  context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('index'))
 
 def user_logout(request):
     logout(request)
@@ -63,7 +62,8 @@ def user_logout(request):
 
 def index(request):
     return render_to_response('index.html',{'user':request.user,
-                                            })
+                                            },
+                              context_instance = RequestContext(request))
 
 def about(request):
     return render_to_response('about.html',)

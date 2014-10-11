@@ -44,7 +44,8 @@ def news_index(request,dn):
 
 def news_count(request,dn,id):
     n = list.objects.get(id = id)
-    n.click += 1
+    if not n.auth == request.user:
+        n.click += 1
     url = n.url
     n.save()
     return HttpResponseRedirect(url)

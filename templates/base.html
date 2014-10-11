@@ -54,14 +54,19 @@
 {% block research %}{% endblock %}
 
 <footer style="border-top: 1px solid #dcdcdc;padding: 10px;margin-top: 10%">
-    <div class="container">
-        <div class="pull-left">
-            &copy;dlpucsdn.com 2013-2014
-        </div>
-        <div class="pull-right">
+    <div class="container" style="text-align: center;line-height: 1">
+
+        <div style="margin-bottom: 10px">
             <a href="{% url 'about' %}">关于我们</a>
             <a href="https://github.com/tcitry" target="_blank" style="margin-left: 10px;margin-right: 10px">联系作者</a>
             <a href="http://csdn.net" target="_blank">Csdn.net</a>
+        </div>
+        <div >
+            &copy;dlpucsdn.com 2013-2014
+        </div>
+        <div>
+            <a href="https://www.digitalocean.com/"><img src="/static/images/DO.png"></a>
+            <a href="http://www.csdn.net/"><img src="/static/images/csdn.png"></a>
 
         </div>
     </div>

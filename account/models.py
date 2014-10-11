@@ -5,8 +5,6 @@ class profile(models.Model):
     user = models.OneToOneField(User)
     number = models.IntegerField(max_length=10,blank=True)
     identity = models.IntegerField(default=0)
-    website = models.URLField(blank=True,null=True)
-
     def __unicode__(self):
         return self.user
 
