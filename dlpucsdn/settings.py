@@ -20,12 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '765q#l*2l%pf=0sq7nowe=bm1+m4^@5spyq=nh%%xyh5fts7(%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [
-    'dlpucsdn.com',
+    # '.dlpucsdn.com',
+    # 'dlpucsdn.com.',
 ]
 
 ADMINS = (
