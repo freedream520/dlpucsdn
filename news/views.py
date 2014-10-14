@@ -50,6 +50,3 @@ def news_count(request,dn,id):
     url = n.url
     n.save()
     return HttpResponseRedirect(url)
-
-
-

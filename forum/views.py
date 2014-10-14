@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext as _
 import re
 from django.contrib.auth.models import User
+from forum.models import mention
 # Create your views here.
 
 def create_topic(request, dn):

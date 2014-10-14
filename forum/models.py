@@ -31,3 +31,15 @@ class reply(models.Model):
         ordering = ['time_created']
     def __unicode__(self):
         return str(self.id)+self.topic.title
+
+class mention(models.Model):
+    sender = models.ForeignKey(User,related_name='rend')
+    receiver = models.ForeignKey(User,related_name='receive')
+    time_created = models.DateTimeField(auto_now_add=True)
+    mytopic = models.ForeignKey(topic,blank=True,null=True)
+    content = models.TextField(blank=True,null=True)
+    read = models.BooleanField(default=False)
+    def __unicode__(self):
+        return self.mytopic
+
+
