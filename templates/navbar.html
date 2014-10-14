@@ -20,14 +20,14 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="">
-                        <a href="#">{{ user.username }} <span class="badge">42</span></a>
+                        <a href="{% url 'user_profile' user.id %}">{{ user.username }} <span class="badge">42</span></a>
                     </li>
                     <li class="">
                         <a href="{% url 'logout' %}"><img src="/static/images/logout.png"></a>
                     </li>
                 {% else %}
                     <li class=""><a href="{% url 'login' %}">登录</a></li>
-
+                    <li class=""><a href="{% url 'signup' %}">注册</a></li>
                 {% endif %}
             </ul>
         </nav>

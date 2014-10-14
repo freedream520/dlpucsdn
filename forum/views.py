@@ -6,6 +6,10 @@ from forum.models import topic
 from django.template import RequestContext
 from forum.models import topic, reply
 from datetime import datetime
+from django.contrib import messages
+from django.utils.translation import ugettext as _
+import re
+from django.contrib.auth.models import User
 # Create your views here.
 
 def create_topic(request, dn):
@@ -73,6 +77,9 @@ def create_reply(request, dn, topic_id):
 
 def del_topic(request, dn, topic_id):
     t = topic.objects.get(id = topic_id)
-    t.deleted = True
-    t.save()
+    if request.user == t.auth:
+        t.deleted = True
+        t.save()
+    else:
+        messages.add_message(request,messages.WARNING,_('delete failed , you are not the author of the topic !'))
     return HttpResponseRedirect(reverse('forum_index',kwargs={'dn':dn}))

@@ -6,21 +6,26 @@
     <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-8">
+                {% if user.is_authenticated %}
+                    <div class="panel-body">
+                        <form role="form" method="post" action="">
+                            {% csrf_token %}
+                            <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
 
-                <div class="panel-body">
-                    <form role="form" method="post" action="">
-                        {% csrf_token %}
-                        <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
+                            <p><textarea id="editor" placeholder="内容" class="form-control" name="content"></textarea>
+                            </p>
 
-                        <p><textarea id="editor" placeholder="内容" class="form-control" name="content"></textarea></p>
+                            <p class="pull-right">
+                                <a href="{% url 'forum_index' dn %}" class="btn btn-warning">返回</a>
+                                <button class="btn btn-info" type="submit" style="margin-left: 10px;width: 100px">提交
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                {% else %}
+                    请登陆或注册
+                {% endif %}
 
-                        <p class="pull-right">
-                            <a href="{% url 'forum_index' dn %}" class="btn btn-warning">返回</a>
-                            <button class="btn btn-info" type="submit" style="margin-left: 10px;width: 100px">提交
-                            </button>
-                        </p>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

@@ -5,6 +5,8 @@ from account.models import department
 from blog.models import blogs,breply
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 # Create your views here.
 
 def write_blog(request,dn):
@@ -38,7 +40,6 @@ def blog_view(request,dn,blog_id):
                                                 'department':d.cn},
                              context_instance = RequestContext(request))
 
-
 def blog_index(request,dn):
     d = department.objects.get(name = dn)
     blog = blogs.objects.filter(department_name = d,deleted = False)
@@ -61,3 +62,11 @@ def create_breply(request,dn,blog_id):
         b.save()
         return HttpResponseRedirect(reverse('blog_view',kwargs={'dn':dn,
                                                                 'blog_id':blog_id}))
+def del_blog(request,dn,blog_id):
+    b = blogs.objects.get(id = blog_id)
+    if request.user==b.auth:
+        b.deleted = True
+        b.save()
+    else:
+        messages.add_message(request,messages.WARNING,_('delete failed , you are not the author of the blog !'))
+    return HttpResponseRedirect(reverse('blog_index',kwargs={'dn':dn}))

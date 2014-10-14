@@ -1,11 +1,11 @@
-from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect,HttpResponse
-from news.models import list
 from account.models import department
 from django.core.urlresolvers import reverse
 from news.models import list
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 def add_news(request,dn):
     d = department.objects.get(name = dn)
@@ -26,7 +26,8 @@ def add_news(request,dn):
             n.department_name = d
             n.save()
         else:
-            return HttpResponse('blank')
+            messages.add_message(request,messages.WARNING,_('title or url can\'t be blank'),)
+            return HttpResponseRedirect(reverse('add_news',kwargs={'dn':dn}))
     return HttpResponseRedirect(reverse('news_index',kwargs={'dn':dn}))
 
 

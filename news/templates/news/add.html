@@ -1,27 +1,39 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span style="font-size: 18px">添加一个新闻链接</span>
-                </div>
-                <div class="panel-body">
-                    <form role="form" method="post" action="">
-                        {% csrf_token %}
-                        <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if user.is_authenticated %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span style="font-size: 18px">添加一个新闻链接</span>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" method="post" action="">
+                            {% csrf_token %}
+                            <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
 
-                        <p><input type="url" placeholder="url地址" class="form-control" name="url"></p>
+                            <p><input type="url" placeholder="url地址" class="form-control" name="url"></p>
 
-                        <p class="pull-right">
-                            <a href="{% url 'news_index' dn %}" class="btn btn-warning">返回</a>
-                            <button class="btn btn-info" type="submit" style="margin-left: 10px;width: 100px">提交
-                            </button>
-                        </p>
-                    </form>
+                            <p class="pull-right">
+                                <a href="{% url 'news_index' dn %}" class="btn btn-warning">返回</a>
+                                <button class="btn btn-info" type="submit" style="margin-left: 10px;width: 100px">提交
+                                </button>
+                            </p>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                请登陆或注册
+            {% endif %}
         </div>
     </div>
 {% endblock %}

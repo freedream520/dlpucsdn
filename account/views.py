@@ -20,7 +20,7 @@ def user_login(request):
         u = authenticate(username=username, password=password)
         if not User.objects.filter(username=username).exists():
             messages.add_message(request, messages.WARNING, 'username is not exist')
-            return render_to_response('index.html', {'login': False},
+            return render_to_response('account/login.html', {'login': False},
                                       context_instance=RequestContext(request))
         elif not u:
             messages.add_message(request, messages.WARNING, 'password is invalid')
@@ -43,6 +43,7 @@ def user_signup(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        qq = request.POST['qq']
         if password1 == password2:
             user = User.objects.create_user(username=username, password=password1, email=email)
             u = authenticate(username=username, password=password1, email=email)
@@ -53,6 +54,9 @@ def user_signup(request):
         p = profile()
         p.number = number
         p.user = user
+        p.username = username
+        p.email = email
+        p.qq = qq
         p.save()
         return HttpResponseRedirect(reverse('index'))
 
@@ -68,5 +72,7 @@ def index(request):
 def about(request):
     return render_to_response('about.html',)
 
-def user_profile(request):
-    return render_to_response('account/user.html',)
+def user_profile(request,user_id):
+    p = User.objects.get(id = user_id)
+    return render_to_response('account/user.html',{'p':p,
+                                                   'user':request.user})
