@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock %}
+{% block signup %}
+    <div style="width: 400px;margin-left: auto;margin-right: auto;margin-top: 5%;margin-bottom: 20%;margin-top: 10%">
+
+        <form role="form" method="post" action="" style="margin-left: 5%;margin-right: 5%">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% csrf_token %}
+            <p><input type="text" class="form-control" placeholder="用户名" name="username"></p>
+
+            <p>
+
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Email" name="email">
+
+                <div class="input-group-addon">@dlpu.edu.cn</div>
+            </div>
+            </p>
+            <p><input type="password" class="form-control" placeholder="设置密码" name="password1"></p>
+
+            <p><input type="password" class="form-control" placeholder="确认密码" name="password2"></p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">教师注册</button>
+        </form>
+    </div>
+{% endblock %}

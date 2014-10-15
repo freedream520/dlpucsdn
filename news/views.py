@@ -42,6 +42,7 @@ def news_index(request,dn):
                                                     'news':news,
                                                     'department':d.cn},
                                   context_instance = RequestContext(request))
+    return HttpResponseRedirect(reverse('index'))
 
 def news_count(request,dn,id):
     n = list.objects.get(id = id)

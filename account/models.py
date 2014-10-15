@@ -6,7 +6,7 @@ class profile(models.Model):
     username = models.CharField(max_length=20)
     email = models.EmailField(blank=True,null=True)
     qq = models.IntegerField(max_length=20,blank=True,null=True)
-    number = models.IntegerField(max_length=15,blank=True)
+    number = models.IntegerField(max_length=15,blank=True,null=True)
     identity = models.IntegerField(default=0)
     deleted = models.BooleanField(default=False)
     def __unicode__(self):

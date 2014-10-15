@@ -64,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 )
 
 ROOT_URLCONF = 'dlpucsdn.urls'
@@ -116,12 +117,10 @@ TEMPLATE_DIRS = (
 
 # SESSION_SAVE_EVERY_REQUEST = True
 
-# SEND_BROKEN_LINK_EMAILS = True
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = ''
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-#
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.exmail.qq.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'admin@dlpucsdn.com'
+EMAIL_HOST_PASSWORD = 'dhwsbg3960'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = 'tcitry@gmail.com'

@@ -8,7 +8,11 @@
 {% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8">
-
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
 
             <div class="list-group">
                 <div class="list-group-item">
@@ -19,14 +23,15 @@
 
             </div>
             <div class="alert alert-warning" role="alert">
-                <p>dlpucsdn社区提供各专业内部之间的学科交流、作业查询和资源下载等功能，你可以在分区内发布自己感兴趣的话题，推荐使用谷歌或火狐浏览器，请将你的建议或发现的bug提交至<a href="https://github.com/tcitry/dlpucsdn/issues" target="_blank">这里</a>，需要申请分区请联系作者。
+                <p>dlpucsdn社区提供各专业内部之间的学科交流、作业查询和资源下载等功能，你可以在分区内发布自己感兴趣的话题，推荐使用谷歌或火狐浏览器，请将你的建议或发现的bug提交至<a
+                        href="https://github.com/tcitry/dlpucsdn/issues" target="_blank">这里</a>，需要申请分区请联系作者。
                 </p>
             </div>
 
 
         </div>
         <div class="col-md-4">
-            <div  style="text-align: center">
+            <div style="text-align: center">
                 <img src="../static/images/qrcode.jpg" class="img-thumbnail">
             </div>
         </div>
