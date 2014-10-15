@@ -107,9 +107,9 @@ def teacher_signup(request):
         p.temp = '%s %s %s'%(username,password1,email)
         p.save()
         url = base64.encodestring(p.temp)
-        send_mail(u'教师身份验证', u'<p>尊敬的老师，点击下面的链接验证您在工大CSDN的教师身份，以便您能正常的使用作业发布等功能。</p><p>http://dlpucsdn.com/confirm/%s</p>' % (url),
+        send_mail(u'教师身份验证', u'尊敬的老师，点击后面的链接验证您在工大CSDN的教师身份，以便您能正常的使用作业发布等功能。http://dlpucsdn.com/confirm/%s' % (url),
                   'admin@dlpucsdn.com', ['tcitry@gmail.com'])
-        messages.add_message(request,messages.WARNING,_(u'已经向您的邮箱%s发送了邮件，请注意查收！'%('tcitry@gmail.com')))
+        messages.add_message(request,messages.WARNING,_(u'已经向您的邮箱%s发送了邮件，请注意查收！'%(email)))
     return render_to_response('index.html',
                               context_instance=RequestContext(request))
 
