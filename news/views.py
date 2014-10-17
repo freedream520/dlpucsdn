@@ -1,3 +1,4 @@
+#coding=utf-8
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect,HttpResponse
@@ -12,6 +13,7 @@ def add_news(request,dn):
     if request.method == 'GET':
         return render_to_response('news/add.html',{'user':request.user,
                                                    'dn':dn,
+                                                   'title':'添加一条新闻',
                                                    'department':d.cn},
                                   context_instance = RequestContext(request))
     elif request.method == 'POST':
@@ -26,7 +28,7 @@ def add_news(request,dn):
             n.department_name = d
             n.save()
         else:
-            messages.add_message(request,messages.WARNING,_('title or url can\'t be blank'),)
+            messages.add_message(request,messages.WARNING,_(u'标题或链接不能为空'),)
             return HttpResponseRedirect(reverse('add_news',kwargs={'dn':dn}))
     return HttpResponseRedirect(reverse('news_index',kwargs={'dn':dn}))
 
@@ -39,6 +41,7 @@ def news_index(request,dn):
         news = list.objects.filter(department_name = d)
         return render_to_response('news/list.html',{'user':request.user,
                                                     'dn':dn,
+                                                    'title':u'News %s'%(d.cn),
                                                     'news':news,
                                                     'department':d.cn},
                                   context_instance = RequestContext(request))

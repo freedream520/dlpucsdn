@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'blog',
     'assignment',
     'research',
+    'uploader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,6 +122,11 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.exmail.qq.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'admin@dlpucsdn.com'
-EMAIL_HOST_PASSWORD = 'dhwsbg3960'
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = 'tcitry@gmail.com'
+
+
+QINIU_ACCESS_KEY = 'vco8VEaZwm24oxn9btpSdjVUMGUe21-K049IlIbl'
+QINIU_SECRET_KEY = 'jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru'
+QINIU_BUCKET_DEFAULT = 'dlpucsdn'

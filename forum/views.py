@@ -1,3 +1,4 @@
+#coding=utf-8
 from django.shortcuts import render, render_to_response, RequestContext
 from account.models import department
 from django.http.response import HttpResponseRedirect
@@ -18,11 +19,15 @@ def create_topic(request, dn):
     if request.method == 'GET':
         return render_to_response('forum/create.html', {'user': request.user,
                                                         'dn': dn,
+                                                        'title':u'创建一个主题',
                                                         'department': d.cn},
                                   context_instance=RequestContext(request))
     elif request.method == 'POST':
         title = request.POST['title']
         content = request.POST['content']
+        if not title:
+            messages.add_message(request,messages.WARNING,_(u'标题不能为空'))
+            return HttpResponseRedirect(reverse('create_topic',kwargs={'dn':dn}))
         t = topic()
         t.department_name = d
         t.title = title
@@ -39,6 +44,7 @@ def forum_index(request, dn):
     topics = topic.objects.filter(department_name=d,deleted = False)
     return render_to_response('forum/index.html', {'dn': dn,
                                                    'user': request.user,
+                                                   'title':u'主题列表',
                                                    'topics': topics,
                                                    'department': d.cn},
                               context_instance=RequestContext(request))
@@ -54,6 +60,7 @@ def topic_view(request, dn, topic_id):
                                                    'dn': dn,
                                                    'department': d.cn,
                                                    'reply': r,
+                                                   'title': t.title,
                                                    'request':request,
                                                    'topic_id': topic_id,
                                                    'topics': t},
@@ -81,6 +88,7 @@ def del_topic(request, dn, topic_id):
     if request.user == t.auth:
         t.deleted = True
         t.save()
+        messages.add_message(request,messages.WARNING,_(u'删除成功！'))
     else:
-        messages.add_message(request,messages.WARNING,_('delete failed , you are not the author of the topic !'))
+        messages.add_message(request,messages.WARNING,_(u'删除失败，你不是这个主题的作者！'))
     return HttpResponseRedirect(reverse('forum_index',kwargs={'dn':dn}))

@@ -4,9 +4,14 @@
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8 col-md-offset-2">
 
-                {% if user.is_authenticated %}
-                    <div class="panel-body">
+            {% if user.is_authenticated %}
+                <div class="panel-body">
                     <form role="form" method="post" action="">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="alert alert-danger">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
                         {% csrf_token %}
                         <p><input type="text" placeholder="标题" class="form-control" name="title"></p>
 
@@ -20,9 +25,9 @@
                         </p>
                     </form>
                 </div>
-                {% else %}
-                    请登录或注册
-                {% endif %}
+            {% else %}
+                请登录或注册
+            {% endif %}
         </div>
     </div>
     <script>

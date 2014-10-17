@@ -15,7 +15,7 @@ import re
 
 def user_login(request):
     if request.method == 'GET':
-        return render_to_response('account/login.html',
+        return render_to_response('account/login.html',{'title':'用户登录--工大CSDN俱乐部'},
                                   context_instance=RequestContext(request))
     elif request.method == 'POST':
         username = request.POST['username']
@@ -38,7 +38,7 @@ def user_login(request):
 
 def user_signup(request):
     if request.method == 'GET':
-        return render_to_response('account/signup.html',
+        return render_to_response('account/signup.html',{'title':u'学生注册--工大CSDN俱乐部'},
                                   context_instance=RequestContext(request))
     elif request.method == 'POST':
         username = request.POST['username']
@@ -67,8 +67,7 @@ def user_logout(request):
 
 
 def index(request):
-    return render_to_response('index.html', {'user': request.user,
-    },
+    return render_to_response('index.html', {'user': request.user,'title':u'大连工业大学CSDN俱乐部--We run cool events'},
                               context_instance=RequestContext(request))
 
 
@@ -78,13 +77,13 @@ def about(request):
 
 def user_profile(request, user_id):
     p = User.objects.get(id=user_id)
-    return render_to_response('account/user.html', {'p': p,
+    return render_to_response('account/user.html', {'p': p, 'title':u'个人信息--%s'%(p.username),
                                                     'user': request.user})
 
 
 def teacher_signup(request):
     if request.method == 'GET':
-        return render_to_response('account/teacher-signup.html',
+        return render_to_response('account/teacher-signup.html',{'title':'教师注册--工大CSDN俱乐部'},
                                   context_instance=RequestContext(request))
     elif request.method == 'POST':
         username = request.POST['username']
@@ -107,7 +106,8 @@ def teacher_signup(request):
         p.temp = '%s %s %s'%(username,password1,email)
         p.save()
         url = base64.encodestring(p.temp)
-        send_mail(u'教师身份验证', u'尊敬的老师，点击后面的链接验证您在工大CSDN的教师身份，以便您能正常的使用作业发布等功能。http://dlpucsdn.com/confirm/%s' % (url),
+        send_mail(u'教师身份验证', u'尊敬的老师，点击后面的链接验证您在工大CSDN的教师身份，以便您能正常的使用作业发布等功能。'
+                             u'http://dlpucsdn.com/confirm/%s' % (url),
                   'admin@dlpucsdn.com', ['tcitry@gmail.com'])
         messages.add_message(request,messages.WARNING,_(u'已经向您的邮箱%s发送了邮件，请注意查收！'%(email)))
     return render_to_response('index.html',
