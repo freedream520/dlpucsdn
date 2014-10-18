@@ -14,6 +14,6 @@ class profile(models.Model):
 
 class department(models.Model):
     name = models.CharField(max_length=5)
-    cn = models.TextField(max_length=10)
+    cn = models.CharField(max_length=20)
     def __unicode__(self):
         return self.cn

@@ -23,7 +23,7 @@ def write_blog(request,dn):
         b.title = request.POST['title']
         b.content = request.POST['content']
         b.department_name = d
-        if not b.title and not b.content:
+        if b.title and b.content:
             b.save()
             return HttpResponseRedirect(reverse('blog_index',kwargs={'dn':dn}))
         messages.add_message(request,messages.WARNING,_(u'标题或内容不能为空！'))
