@@ -11,17 +11,17 @@
                     <div class="alert alert-danger">{{ message }}</div>
                 {% endfor %}
             {% endif %}
-                <div class="panel-heading">
+                <div class="panel-heading" style="background-color: #C6E5E9">
                     <span style="font-size: 18px">主题</span>
-                    <a href="{% url 'create_topic' dn %}" class="btn btn-success btn-sm pull-right"
-                       style="margin-top: -2px">新话题</a>
+                    <a href="{% url 'create_topic' dn %}" class="btn btn-sm pull-right"
+                       style="margin-top: -2px;background-color: #D73C31;color: #ffffff">新话题</a>
                 </div>
                 <ul class="list-group">
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
-                                <a href="" class="col-sm-1 col-xs-2 col-md-1">
-                                    <img src="../static/images/pitch/bg.jpg" height="50px" width="50px"
+                                <a href="{% url 'user_profile' t.auth.id %}" class="col-sm-1 col-xs-2 col-md-1">
+                                    <img src="/static/images/default.png" height="50px" width="50px"
                                          class="img-circle">
                                 </a>
 

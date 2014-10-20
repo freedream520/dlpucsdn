@@ -6,6 +6,6 @@ from account.models import department
 def research_index(request,dn):
     d = department.objects.get(name = dn)
     return render_to_response('research/index.html',{'dn':dn,
-                                                     'title':'%s--科研'%(d.cn),
+                                                     'title':u'%s--科研'%(d.cn),
                                                      'department':d.cn,
                                                      'user':request.user})

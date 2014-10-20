@@ -9,6 +9,7 @@ class profile(models.Model):
     number = models.IntegerField(max_length=15,blank=True,null=True)
     identity = models.IntegerField(default=0)
     deleted = models.BooleanField(default=False)
+    website = models.URLField(blank=True,null=True)
     def __unicode__(self):
         return self.user
 

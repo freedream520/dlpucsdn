@@ -106,7 +106,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = '/Library/Python/2.7/site-packages/Django-1.7-py2.7.egg/django/__init__.pyc'
+STATIC_ROOT = '/Library/Python/2.7/site-packages/Django-1.7-py2.7.egg/django/__init__.py'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
