@@ -19,7 +19,7 @@
                 </div>
 
                 <ul class="list-group">
-                    {% autopaginate topics 2 %}
+                    {% autopaginate topics 30 %}
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
@@ -41,9 +41,10 @@
                             </div>
                         </li>
                     {% endfor %}
-                    {% paginate %}
                 </ul>
-
+            </div>
+            <div style="text-align: center">
+                {% paginate %}
             </div>
         </div>
         <div class="col-md-4">
