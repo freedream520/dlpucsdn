@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -33,7 +34,6 @@ ADMINS = (
     ('tcitry', 'tcitry@gmail.com'),
 )
 
-
 MANAGERS = (
     ('tcitry', 'tcitry@gmail.com'),
 )
@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'assignment',
     'research',
     'uploader',
+    'pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,8 +67,19 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+)
 ROOT_URLCONF = 'dlpucsdn.urls'
 
 WSGI_APPLICATION = 'dlpucsdn.wsgi.application'
@@ -113,7 +125,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
 # SESSION_SAVE_EVERY_REQUEST = True
@@ -126,4 +138,6 @@ EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = 'tcitry@gmail.com'
 
-
+QINIU_ACCESS_KEY = "vco8VEaZwm24oxn9btpSdjVUMGUe21-K049IlIbl"
+QINIU_SECRET_KEY = "jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru"
+QINIU_BUCKET_DEFAULT = "dlpucsdn"

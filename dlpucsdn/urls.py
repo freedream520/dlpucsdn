@@ -21,7 +21,11 @@ urlpatterns = patterns('',
                        url(r'^(?P<dn>\w{2})/forum/$', 'forum.views.forum_index', name='forum_index'),
                        url(r'^(?P<dn>\w{2})/blog/$', 'blog.views.blog_index', name='blog_index'),
                        url(r'^(?P<dn>\w{2})/research/$', 'research.views.research_index', name='research_index'),
-                       url(r'^src/','uploader.views.src_index',name='src_index'),
+                       # url(r'^src/','uploader.views.src_index',name='src_index'),
                        url(r'^src/',include('uploader.urls')),
+
+                       url(r'^js/(?P<path>,*)$','django.views.static.serve',{'document_root':'./templates/js'}),
+                       url(r'^css/(?P<path>,*)$','django.views.static.serve',{'document_root':'./templates/css'}),
+
 
 )

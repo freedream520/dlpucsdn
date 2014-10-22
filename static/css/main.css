@@ -38,3 +38,23 @@
 a:hover {
     text-decoration: none;
 }
+
+.btn-blue{
+    background-color: #5bc0de;
+    color: #ffffff;
+    font: bold;
+}
+.btn-red{
+    background-color: #D73C31;
+    color: #ffffff;
+    font: bold;
+}
+.btn-green{
+    background-color: #C6E5E9;
+    color: #ffffff;
+    font: bold;
+}
+.btn-red:hover{
+    background-color: #F0AD4E;
+    color: #ffffff;
+}

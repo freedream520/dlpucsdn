@@ -50,7 +50,9 @@
                                     </a>
 
                                     <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
-                                        {{ r.content | safe }}
+                                        <div style="overflow-y: auto;max-height: 1000px">
+                                            {{ r.content | safe }}
+                                        </div>
                                         <div style="margin-top: 30px">
                                             <span></span>
                                             <span id="count"><a

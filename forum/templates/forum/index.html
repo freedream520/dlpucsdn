@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load pagination_tags %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8">
 
             <div class="panel panel-default ">
-             {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-danger">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
                 <div class="panel-heading" style="background-color: #C6E5E9">
                     <span style="font-size: 18px">主题</span>
                     <a href="{% url 'create_topic' dn %}" class="btn btn-sm pull-right"
                        style="margin-top: -2px;background-color: #D73C31;color: #ffffff">新话题</a>
                 </div>
+
                 <ul class="list-group">
+                    {% autopaginate topics 2 %}
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
@@ -38,7 +41,9 @@
                             </div>
                         </li>
                     {% endfor %}
+                    {% paginate %}
                 </ul>
+
             </div>
         </div>
         <div class="col-md-4">
