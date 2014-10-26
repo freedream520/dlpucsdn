@@ -74,7 +74,9 @@ def del_blog(request,dn,blog_id):
     if request.user==b.auth:
         b.deleted = True
         b.save()
-        messages.add_message(request,messages.SUCCESS,_(u'删除成功，若要恢复请联系作者 !'))
+        messages.add_message(request,messages.SUCCESS,_(u'删除成功，若要恢复请联系我们 !'))
     else:
         messages.add_message(request,messages.WARNING,_(u'删除失败，你不是这篇博客的作者 !'))
     return HttpResponseRedirect(reverse('blog_index',kwargs={'dn':dn}))
+
+# def blog_chart(request):

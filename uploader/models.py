@@ -7,4 +7,4 @@ class file(models.Model):
 
 class head(models.Model):
     name = models.CharField(max_length=20)
-    url = models.URLField(blank=True,null=True)
+    url = models.ImageField(upload_to='',blank=True,null=True)

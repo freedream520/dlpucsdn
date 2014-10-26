@@ -9,6 +9,7 @@ import qiniu.conf
 import qiniu.rs
 import qiniu.io
 import sys
+from uploader.models import head
 
 qiniu.conf.ACCESS_KEY="vco8VEaZwm24oxn9btpSdjVUMGUe21-K049IlIbl"
 qiniu.conf.SECRET_KEY="jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru"
@@ -25,10 +26,10 @@ def src_index(request):
                                                        'token':uptoken},
                                   context_instance=RequestContext(request))
     elif request.method=="POST":
-        f = request.POST['image']
-        ret, err = qiniu.io.put_file(uptoken, f,)
-        if err is not None:
-            sys.stderr.write('error: %s ' % err)
-            return
+        f = request.FILES['file']
+
+        h = head()
+        h.url = f
+        h.save()
         return HttpResponseRedirect(reverse('src_index',kwargs={'request':request}),
                                     context_instance=RequestContext(request))

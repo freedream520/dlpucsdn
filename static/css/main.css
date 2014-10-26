@@ -58,3 +58,15 @@ a:hover {
     background-color: #F0AD4E;
     color: #ffffff;
 }
+.forum-title a:hover{
+    color: #D73C31;
+}
+.news a{
+    color: #245269;
+}
+.news a:hover{
+    color: #D73C31;
+}
+.news a:visited{
+    color: #9999CC;
+}

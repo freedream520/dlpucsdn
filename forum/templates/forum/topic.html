@@ -28,9 +28,9 @@
                                 class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
                             {% if topics.auth == request.user %}
                                 <a href="" style="text-decoration: none"><span
-                                        class="label label-success">附加</span></a>
+                                        class="label label-success glyphicon glyphicon-pencil">附加</span></a>
                                 <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
-                                        class="label label-danger">delete</span></a>
+                                        class="label label-danger glyphicon glyphicon-trash">delete</span></a>
                             {% endif %}
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                     </a>
 
                                     <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
-                                        <div style="overflow-y: auto;max-height: 1000px">
+                                        <div style="overflow-y: auto;max-height: 800px">
                                             {{ r.content | safe }}
                                         </div>
                                         <div style="margin-top: 30px">
@@ -58,7 +58,7 @@
                                             <span id="count"><a
                                                     href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a></span><span
                                                 id="count"
-                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
+                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span><a style="margin-left: 5px" href="" class="label label-info "></a>
                                         </div>
                                     </div>
                                     <div class="pull-right" style="margin-right: 10px;margin-top: 10px">

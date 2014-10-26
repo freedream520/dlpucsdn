@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load pagination_tags %}
 {% block nav %}
     {% include 'navbar.html' %}
 {% endblock %}
@@ -12,13 +13,18 @@
                         <a href="{% url 'add_news' dn %}" class="btn btn-sm pull-right"
                            style="margin-top: -2px;background-color: #D73C31;color: #ffffff">Add</a>
                     </div>
-                    <div class="list-group">
+                    <div class="list-group news">
+                        {% autopaginate news 30 %}
                         {% for n in news %}
-                            <a href="{{ n.id }}" target="_blank" class="list-group-item">{{ n.title }}<span class="pull-right"><span id="count">{{ n.auth }}</span><span
+                            <a href="{{ n.id }}" target="_blank" class="list-group-item">{{ n.title }}<span
+                                    class="pull-right"><span id="count">{{ n.auth }}</span><span
                                     class="label label-info"
                                     style="padding: 4px;margin-left: 10px">{{ n.click }}</span></span></a>
                         {% endfor %}
                     </div>
+                </div>
+                <div style="text-align: center">
+                    {% paginate %}
                 </div>
             </div>
             <div class="col-md-4">

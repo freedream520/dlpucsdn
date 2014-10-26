@@ -19,7 +19,7 @@
                 </div>
 
                 <ul class="list-group">
-                    {% autopaginate topics 30 %}
+                    {% autopaginate topics 20 %}
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
@@ -28,8 +28,8 @@
                                          class="img-circle">
                                 </a>
 
-                                <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px">
-                                    <div><a style="font-size: 18px" href="{{ t.id }}">{{ t.title }}</a></div>
+                                <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px;">
+                                    <div class="forum-title"><a style="font-size: 18px;font: bold" href="{{ t.id }}">{{ t.title }}</a></div>
                                     <div style="margin-top: 10px">
                                         <span><a href="{% url 'user_profile' t.auth.id %}"
                                                  style="text-decoration: none">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created | naturaltime }} </span><span>有({{ t.reply_count }})条评论</span>

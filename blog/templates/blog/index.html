@@ -1,29 +1,35 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load pagination_tags %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8 col-sm-8 col-sm-8">
-        {% if messages %}
-            {% for message in messages %}
-                <p class="alert alert-danger">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert alert-danger">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
             <div>
                 <div class="jumbotron" style="background-color: #C6E5E9;text-align: center">
                     <h2><a href="{% url 'write_blog' dn %}">Write the blog</a> , to be a better man</h2>
                 </div>
             </div>
+            {% autopaginate blog 15 %}
             {% for b in blog %}
                 <div class="" style="border-bottom: 1px solid darkgreen;padding-bottom: 5px">
                     <h4 style="margin-top: 10px"><a href="{{ b.id }}">{{ b.title }}</a></h4>
 
-                    <p>{{ b.content | truncatechars_html:100 | safe}}</p>
+                    <p>{{ b.content | truncatechars_html:100 | safe }}</p>
 
-                    <div style="margin-top: -5px"><span><a id="count" href="{% url 'user_profile' b.auth.id %}" style="text-decoration: none">{{ b.auth }}</a></span><span> 发表于 {{ b.time_created | date }} </span><span>评论({{ b.reply_count }}) 点击({{ b.click }})</span></div>
+                    <div style="margin-top: -5px"><span><a id="count" href="{% url 'user_profile' b.auth.id %}"
+                                                           style="text-decoration: none">{{ b.auth }}</a></span><span> 发表于 {{ b.time_created | date }} </span><span>评论({{ b.reply_count }}) 点击({{ b.click }})</span>
+                    </div>
                 </div>
             {% endfor %}
-
+            <div style="text-align: center">
+                {% paginate %}
+            </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div class="panel panel-default ">
