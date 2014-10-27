@@ -86,7 +86,7 @@ def about(request):
 def user_profile(request, user_id):
     p = User.objects.get(id=user_id)
     file = qiniu.rs.PutPolicy('dlpucsdn')
-    file.returnUrl = "http://127.0.0.1:8000/user/head/"
+    file.returnUrl = "http://dlpucsdn.com/user/head/"
     token = file.token()
     key = ''
     if request.method == 'POST':

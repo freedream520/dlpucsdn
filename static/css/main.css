@@ -45,6 +45,7 @@ a:hover {
     font: bold;
 }
 .btn-red{
+    margin: 5px;
     background-color: #D73C31;
     color: #ffffff;
     font: bold;

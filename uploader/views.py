@@ -13,7 +13,7 @@ qiniu.conf.SECRET_KEY="jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru"
 
 def src_index(request):
     file = qiniu.rs.PutPolicy('dlpucsdn')
-    file.returnUrl = "http://127.0.0.1:8000/src"
+    file.returnUrl = "http://dlpucsdn.com/src"
     token = file.token()
     key = 'view'
     if request.method == 'POST':

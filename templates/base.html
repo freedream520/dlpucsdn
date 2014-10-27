@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="description" content="dlpucsdn">
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minmum-scale=1.0, user-scalable=no" name="viewport">#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minmum-scale=1.0, user-scalable=no" name="viewport">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}"/>
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="{% static 'js/jquery-2.1.1.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/module.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/uploader.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/simditor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/simditor-all.js' %}"></script>
     <style>
         [touch-action="none"] {
             -ms-touch-action: none;
@@ -39,7 +39,7 @@
 
     <title>{{ title }}</title>
 </head>
-<body style="word-wrap: break-word;background-color: #F0F0F0">
+<body style="word-wrap: break-word;background-color: #F0F0F0;margin-top: 70px">
 {% block nav %}{% endblock %}
 {% block pitch %}{% endblock %}
 {% block login %}{% endblock %}
@@ -51,20 +51,19 @@
 {% block assignment %}{% endblock %}
 {% block research %}{% endblock %}
 
-<footer style="border-top: 1px solid #dcdcdc;padding: 10px;margin-top: 2%">
-    <div class="container" style="text-align: center;line-height: 1">
+<footer style="border-top: 1px solid #dcdcdc">
+    <div class="container" style="text-align: center;line-height: 2">
 
-        <div style="margin-bottom: 10px">
-            <a href="{% url 'about' %}">关于我们</a>
+        <div>
+            &copy;dlpucsdn.com 2013-2014
+            <a href="{% url 'about' %}">&nbsp;&nbsp;&nbsp;关于我们</a>
             <a href="https://github.com/tcitry" target="_blank" style="margin-left: 10px;margin-right: 10px">联系作者</a>
         </div>
-        <div >
-            &copy;dlpucsdn.com 2013-2014
+        <div>
+            本站由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a href="http://digitalocean.com" target="_blank">DigitalOcean</a>提供服务器
         </div>
         <div>
-            <a href="https://www.digitalocean.com/" target="_blank"><img src="/static/images/DO.png"></a>
             <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
-
         </div>
     </div>
 </footer>
