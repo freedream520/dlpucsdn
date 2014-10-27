@@ -3,6 +3,11 @@
 {% block main %}
     <div class="container" style="margin-top: 20px">
         <div class="col-md-8">
+            {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div>
@@ -11,6 +16,17 @@
                         <p>学号{{ p.number }}</p>
 
                         <p>{{ p.email }}</p>
+
+                    </div>
+                    <div>
+                        <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p><input type="hidden"class="form-control" value="{{ token }}" name="token"></p>
+
+                            <p><input name="file" class="form-control" type="file"></p>
+
+                            <p><input type="submit" class="form-control" value="Upload"></p>
+                        </form>
                     </div>
 
                 </div>

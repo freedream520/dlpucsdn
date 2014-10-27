@@ -117,7 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 #STATIC_ROOT = '/Library/Python/2.7/site-packages/Django-1.7-py2.7.egg/django/__init__.py'
 

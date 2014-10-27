@@ -4,9 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <form method="post" action="{% url 'src_index' %}" enctype="multipart/form-data">
+                <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input type="file" name="file">
+                    <p><input name="token" type="hidden" value="{{ token }}"></p>
+{#                    <p><input name="key" type="hidden" value="default"></p>#}
+{#                    <p><input name="x:file_name" type="hidden" value="file_name"></p>#}
+                    <p><input name="file" type="file"></p>
+
                     <input type="submit" value="upload">
                 </form>
             </div>

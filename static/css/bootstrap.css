@@ -100,7 +100,8 @@ hr {
           box-sizing: content-box;
 }
 pre {
-  overflow: auto;
+    max-height: 600px;
+  overflow-y: auto;
 }
 code,
 kbd,

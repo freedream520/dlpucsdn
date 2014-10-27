@@ -1,10 +1,7 @@
 #coding=utf-8
 from django.db import models
+from django import forms
 
-class file(models.Model):
-    name = models.CharField(max_length=20)
-    url = models.URLField(blank=True,null=True)
-
-class head(models.Model):
-    name = models.CharField(max_length=20)
-    url = models.ImageField(upload_to='',blank=True,null=True)
+class files(models.Model):
+    title = models.TextField(blank=True,null=True)
+    url = models.URLField()

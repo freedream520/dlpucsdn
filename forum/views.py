@@ -80,8 +80,8 @@ def create_reply(request, dn, topic_id):
         t.last_replied = datetime.now()
         t.reply_count +=1
         t.save()
-        return HttpResponseRedirect(reverse('topic_view', kwargs={'topic_id': topic_id,
-                                                              'dn': dn}))
+        return HttpResponseRedirect(reverse('topic_view',kwargs={'topic_id':topic_id,
+                                                                 'dn':dn}))
 
 def del_topic(request, dn, topic_id):
     t = topic.objects.get(id = topic_id)

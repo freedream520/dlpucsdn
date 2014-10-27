@@ -14,7 +14,7 @@
                             </div>
                             <div class="pull-right" style="margin-right: 10px">
                                 <a href="">
-                                    <img src="/static/images/default.png" height="50px" width="50px"
+                                    <img src="{{ topics.auth.profile.head }}" height="50px" width="50px"
                                          class="img-circle">
                                 </a>
                             </div>
@@ -45,12 +45,12 @@
                             <div class="list-group-item">
                                 <div class="row">
                                     <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1">
-                                        <img src="/static/images/default.png" height="50px" width="50px"
+                                        <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
                                              class="img-circle">
                                     </a>
 
                                     <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
-                                        <div style="overflow-y: auto;max-height: 800px">
+                                        <div style="max-height: 800px">
                                             {{ r.content | safe }}
                                         </div>
                                         <div style="margin-top: 30px">
@@ -77,7 +77,7 @@
                         <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
                             {% csrf_token %}
                             <textarea placeholder="评论" name="reply" class="form-control" id="editor"></textarea>
-                            <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px">提交
+                            <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px;width: 100px">提交
                             </button>
                         </form>
                     </div>
