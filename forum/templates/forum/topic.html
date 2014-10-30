@@ -2,7 +2,7 @@
 {% load humanize %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="list-group">
@@ -44,7 +44,7 @@
                         {% for r in reply %}
                             <div class="list-group-item">
                                 <div class="row">
-                                    <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1">
+                                    <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1" style="margin-top: 10px">
                                         <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
                                              class="img-circle">
                                     </a>
@@ -58,7 +58,8 @@
                                             <span id="count"><a
                                                     href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a></span><span
                                                 id="count"
-                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span><a style="margin-left: 5px" href="" class="label label-info "></a>
+                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span><a
+                                                style="margin-left: 5px" href="" class="label label-info "></a>
                                         </div>
                                     </div>
                                     <div class="pull-right" style="margin-right: 10px;margin-top: 10px">
@@ -77,7 +78,8 @@
                         <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
                             {% csrf_token %}
                             <textarea placeholder="评论" name="reply" class="form-control" id="editor"></textarea>
-                            <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px;width: 100px">提交
+                            <button class="btn btn-success pull-right" type="submit"
+                                    style="margin-top: 10px;width: 100px">提交
                             </button>
                         </form>
                     </div>

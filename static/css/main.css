@@ -71,3 +71,9 @@ a:hover {
 .news a:visited{
     color: #9999CC;
 }
+.blog a:hover{
+    color: #D73C31;
+}
+.blog a:visited{
+    color: #9999CC;
+}

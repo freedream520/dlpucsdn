@@ -38,10 +38,7 @@ def user_login(request):
             return render_to_response('account/login.html',
                                       context_instance=RequestContext(request))
         login(request, u)
-        return render_to_response('index.html', {'username': username,
-                                                 'login': True,
-                                                 'request': request},
-                                  context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('index', kwargs={'request': request, 'login': True, 'username': username}))
 
 
 def user_signup(request):
@@ -75,7 +72,9 @@ def user_logout(request):
 
 
 def index(request):
-    return render_to_response('index.html', {'user': request.user, 'title': u'大连工业大学CSDN俱乐部--We run cool events'},
+    return render_to_response('index.html', {'user': request.user,
+                                             'request': request,
+                                             'title': u'大连工业大学CSDN俱乐部--We run cool events'},
                               context_instance=RequestContext(request))
 
 
@@ -86,7 +85,7 @@ def about(request):
 def user_profile(request, user_id):
     p = User.objects.get(id=user_id)
     file = qiniu.rs.PutPolicy('dlpucsdn')
-    file.returnUrl = "http://dlpucsdn.com/user/head/"
+    file.returnUrl = "http://127.0.0.1:8000/user/head/"
     token = file.token()
     key = ''
     if request.method == 'POST':
@@ -94,10 +93,11 @@ def user_profile(request, user_id):
         ret, err = qiniu.io.put_file(token, key, local_file)
         if err is not None:
             sys.stderr.write('%s' % err)
-
-    return render_to_response('account/user.html', {'p': p, 'title': u'个人信息--%s' % (p.username),
+    return render_to_response('account/user.html', {'p': p,
                                                     'token': token,
-                                                    'user': request.user})
+                                                    'request': request,
+                                                    'user_id': user_id,
+                                                    'user': request.user,})
 
 
 def teacher_signup(request):
@@ -161,9 +161,8 @@ def user_head(request):
             p = profile.objects.get(user=u)
             p.head = private_url
             p.save()
-            messages.add_message(request,messages.SUCCESS,_(u'上传成功！'))
-            return HttpResponseRedirect(reverse('index'))
-        messages.add_message(request, messages.WARNING, _(u'返回值为空，请重新上传'))
-        return HttpResponseRedirect(reverse('index'))
-    messages.add_message(request, messages.WARNING, _(u'request的类型不是GET！'))
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('user_profile', kwargs={'user_id': request.user.id}))
+
+
+def edit_profile(request):
+    return render_to_response('account/edit.html')

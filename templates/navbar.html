@@ -20,7 +20,8 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="">
-                        <a style="color:#5bc0de;" href="{% url 'user_profile' user.id %}">{{ user.username }} <span class="badge">42</span></a>
+                        <a style="color:#5bc0de;" href="{% url 'user_profile' user.id %}">{{ user.username }} <span
+                                class="badge">42</span></a>
                     </li>
                     <li class="">
                         <a href="{% url 'logout' %}"><img src="/static/images/logout.png"></a>

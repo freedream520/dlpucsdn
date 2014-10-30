@@ -2,39 +2,62 @@
 {% block nav %}{% include 'nav.html' %}{% endblock %}
 {% block main %}
     <div class="container">
-        <div class="col-md-8">
-            {% if messages %}
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
                     {% for message in messages %}
                         <div class="alert alert-success">{{ message }}</div>
                     {% endfor %}
                 {% endif %}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div>
-                        <p>用户名{{ p.username }}</p>
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="panel-body">
+                                <div>
+                                    <p>用户名&nbsp;:&nbsp;{{ p.username }}</p>
 
-                        <p>学号{{ p.number }}</p>
+                                    <p>学号&nbsp;:&nbsp;{{ p.profile.number }}</p>
 
-                        <p>{{ p.email }}</p>
+                                    <p>Email&nbsp;:&nbsp;{{ p.email }}</p>
 
+                                    <p>个人主页&nbsp;:&nbsp;<a target="_blank"
+                                                           href="{{ p.profile.website }}">{{ p.profile.website }}</a>
+                                    </p>
+                                    {% if user.is_authenticated %}
+                                        {% if request.user == p %}
+                                            <p><a href="{% url 'edit_profile' %}">修改个人资料</a></p>
+                                        {% endif %}
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="padding: 20 30 10 0">
+                            <div style="text-align: center;margin: 10px">
+                                <img src="{{ p.profile.head }}" height="100" width="100" class="img-rounded">
+                                {% if request.user == p %}
+                                    <div style="margin: 10px">
+                                        <form method="post" action="http://upload.qiniu.com/"
+                                              enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <input type="hidden" class="form-control" value="{{ token }}" name="token">
+
+                                            <input name="file" type="file"
+                                                   style="margin-top: 5px;margin-bottom: 5px;width: 100px">
+
+                                            <input type="submit" class="form-control btn-green" value="Upload">
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <p><input type="hidden"class="form-control" value="{{ token }}" name="token"></p>
-
-                            <p><input name="file" class="form-control" type="file"></p>
-
-                            <p><input type="submit" class="form-control" value="Upload"></p>
-                        </form>
-                    </div>
-
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div>
-                        <p>消息列表</p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div>
+                            <p>消息列表</p>
+                        </div>
                     </div>
                 </div>
             </div>

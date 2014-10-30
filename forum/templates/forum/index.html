@@ -3,15 +3,15 @@
 {% load pagination_tags %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div class="container" >
+    <div class="container">
         <div class="col-md-8">
-
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
             <div class="panel panel-default ">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-danger">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
+
                 <div class="panel-heading" style="background-color: #C6E5E9">
                     <span style="font-size: 18px">主题</span>
                     <a href="{% url 'create_topic' dn %}" class="btn btn-sm pull-right"
@@ -29,7 +29,8 @@
                                 </a>
 
                                 <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px;">
-                                    <div class="forum-title"><a style="font-size: 18px;font: bold" href="{{ t.id }}">{{ t.title }}</a></div>
+                                    <div class="forum-title"><a style="font-size: 18px;font: bold"
+                                                                href="{{ t.id }}">{{ t.title }}</a></div>
                                     <div style="margin-top: 10px">
                                         <span><a href="{% url 'user_profile' t.auth.id %}"
                                                  style="text-decoration: none">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created | naturaltime }} </span><span>有({{ t.reply_count }})条评论</span>
@@ -43,7 +44,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div style="text-align: center">
+            <div style="text-align: center;margin-top: -20px">
                 {% paginate %}
             </div>
         </div>
