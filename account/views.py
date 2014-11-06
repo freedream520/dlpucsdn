@@ -30,15 +30,16 @@ def user_login(request):
         password = request.POST['password']
         u = authenticate(username=username, password=password)
         if not User.objects.filter(username=username).exists():
-            messages.add_message(request, messages.WARNING, 'username is not exist')
+            messages.add_message(request, messages.WARNING, u'用户名不存在')
             return render_to_response('account/login.html', {'login': False},
                                       context_instance=RequestContext(request))
         elif not u:
-            messages.add_message(request, messages.WARNING, 'password is invalid')
+            messages.add_message(request, messages.WARNING, u'用户名和密码不符')
             return render_to_response('account/login.html',
                                       context_instance=RequestContext(request))
         login(request, u)
-        return HttpResponseRedirect(reverse('index', kwargs={'request': request, 'login': True, 'username': username}))
+        messages.add_message(request,messages.WARNING,u'你已登录')
+        return HttpResponseRedirect(reverse('index'))
 
 
 def user_signup(request):
@@ -50,8 +51,9 @@ def user_signup(request):
         number = request.POST['number']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        email = request.POST['email']
         if password1 == password2:
-            user = User.objects.create_user(username=username, password=password1)
+            user = User.objects.create_user(username=username, password=password1,email=email)
             u = authenticate(username=username, password=password1)
         else:
             messages.add_message(request, messages.WARNING, _(''))
@@ -165,4 +167,5 @@ def user_head(request):
 
 
 def edit_profile(request):
-    return render_to_response('account/edit.html')
+    return render_to_response('account/edit.html',{'request':request,
+                                                   'user':request.user})

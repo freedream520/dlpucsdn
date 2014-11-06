@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 {% block nav %}{% include 'nav.html' %}{% endblock %}
-{% block main%}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><input name="title" type="text" class="form-control" placeholder="文件标题、描述（必填）"></p>
 
+                    <p><input name="token" type="hidden" value="{{ token }}"></p>
+
+                    <p><input name="file" type="file" class="form-control"></p>
+
+                    <input type="submit" value="upload" class="btn-info form-control" style="width: 100px">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor')
+        });
+    </script>
 {% endblock %}

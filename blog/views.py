@@ -33,7 +33,8 @@ def write_blog(request,dn):
 def blog_view(request,dn,blog_id):
     d = department.objects.get(name=dn)
     b = blogs.objects.get(id=blog_id)
-    b.click += 1
+    if not request.user == b.auth:
+        b.click += 1
     b.save()
     br = breply.objects.filter(topic=blog_id)
     return render_to_response('blog/view.html',{'user':request.user,

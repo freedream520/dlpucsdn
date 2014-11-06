@@ -42,10 +42,10 @@
                                             {% csrf_token %}
                                             <input type="hidden" class="form-control" value="{{ token }}" name="token">
 
-                                            <input name="file" type="file"
-                                                   style="margin-top: 5px;margin-bottom: 5px;width: 100px">
+                                            <input name="file" type="file" accept="image/*"
+                                                   style="margin-top: 5px;margin-bottom: 5px">
 
-                                            <input type="submit" class="form-control btn-green" value="Upload">
+                                            <input type="submit" class="form-control btn-green" value="上传头像">
                                         </form>
                                     </div>
                                 {% endif %}

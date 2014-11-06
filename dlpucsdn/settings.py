@@ -119,7 +119,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # MEDIA_URL = '/media/'
 
-#STATIC_ROOT = '/Library/Python/2.7/site-packages/Django-1.7-py2.7.egg/django/__init__.py'
+#STATIC_ROOT = '/usr/local/lib/python2.7/dist-packages/django/contrib/admin/static'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
