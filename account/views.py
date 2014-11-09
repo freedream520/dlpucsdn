@@ -52,12 +52,28 @@ def user_signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
+        if not len(number) == 10:
+            messages.add_message(request, messages.WARNING, _(u'输入的学号有误，请重新输入'))
+            return render_to_response('account/signup.html',
+                                      context_instance=RequestContext(request))
+        if len(password1) <= 5 :
+            messages.add_message(request, messages.WARNING, _(u'密码过短，至少6位'))
+            return render_to_response('account/signup.html',
+                                      context_instance=RequestContext(request))
+        if profile.objects.filter(number = number).exists():
+            messages.add_message(request, messages.WARNING, _(u'输入的学号已被注册，请重新输入或联系作者'))
+            return render_to_response('account/signup.html',
+                                      context_instance=RequestContext(request))
+        if password1 == '123456':
+            messages.add_message(request, messages.WARNING, _(u'输入的密码过于简单，请重新输入'))
+            return render_to_response('account/signup.html',
+                                      context_instance=RequestContext(request))
         if password1 == password2:
             user = User.objects.create_user(username=username, password=password1,email=email)
             u = authenticate(username=username, password=password1)
         else:
-            messages.add_message(request, messages.WARNING, _(''))
-            return render_to_response('account/login.html',
+            messages.add_message(request, messages.WARNING, _(u'密码不一致，请重新输入'))
+            return render_to_response('account/signup.html',
                                       context_instance=RequestContext(request))
         login(request, u)
         p = profile()
@@ -112,6 +128,10 @@ def teacher_signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = '%s@dlpu.edu.cn' % (email)
+        if len(password1) <= 5 :
+            messages.add_message(request, messages.WARNING, _(u'密码过短，至少6位'))
+            return render_to_response('account/teacher-signup.html',
+                                      context_instance=RequestContext(request))
         if password1 == password2:
             user = User.objects.create_user(username=username, password=password1, email=email)
             u = authenticate(username=username, password=password1)

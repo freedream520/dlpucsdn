@@ -54,8 +54,7 @@ def topic_view(request, dn, topic_id):
     d = department.objects.get(name=dn)
     t = topic.objects.get(id=topic_id)
     r = reply.objects.filter(topic=topic_id)
-    if not request.user == t.auth:
-        t.click += 1
+    t.click += 1
     t.save()
     return render_to_response('forum/topic.html', {'user': request.user,
                                                    'dn': dn,

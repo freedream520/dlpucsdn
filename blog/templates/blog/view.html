@@ -5,16 +5,16 @@
     <div class="container" >
         <div class="row">
 
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-8">
              {% if messages %}
             {% for message in messages %}
                 <p class="alert alert-danger">{{ message }}</p>
             {% endfor %}
         {% endif %}
-                <div class="panel panel-default ">
-                    <div class="panel-body">
+                <div class="" style="background-color: transparent">
+                    <div class="panel-body" style="">
                         <div>
-                            <div style="margin: 10px;width: 90%;border-bottom: 2px blueviolet solid">
+                            <div style="margin: 10px;width: 90%;border-bottom: 2px green solid">
                                 <h3 style="">{{ blog.title }}</h3>
                                 <div style="margin-top: 20px;padding-bottom: 10px">
                                     <a href="{% url 'user_profile' blog.auth.id %}" class="label label-primary" style="">{{ blog.auth }}</a>
@@ -23,8 +23,8 @@
                                         class="label label-default"
                                         style="margin-left: 5px">评论({{ blog.reply_count }})</span>
                                     {% if blog.auth == request.user %}
-                                        <a href="" style="text-decoration: none"><span
-                                                class="label label-success">编辑</span></a>
+{#                                        <a href="" style="text-decoration: none"><span#}
+{#                                                class="label label-success">编辑</span></a>#}
                                         <a href="{% url 'del_blog' dn blog_id %}" style="text-decoration: none"><span
                                                 class="label label-danger">delete</span></a>
                                     {% endif %}
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-success">
+                <div class="panel panel-success" style="margin-left: 20px;margin-right: 20px">
                     <div class="panel-heading">
                         有{{ blog.reply_count }}条评论
                     </div>
@@ -63,7 +63,7 @@
 
                     </div>
                 </div>
-                <div class="list-group ">
+                <div class="list-group " style="margin-left: 20px;margin-right: 20px">
                     <form role="form" method="post" action="{% url 'create_breply' dn blog_id %}">
                         {% csrf_token %}
                         <textarea placeholder="评论" name="content" class="form-control" id="editor"></textarea>

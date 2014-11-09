@@ -15,7 +15,7 @@
                 <li class=""><a href="{% url 'news_index' dn %}">{{ department }}</a></li>
                 <li class=""><a href="{% url 'forum_index' dn %}">论坛</a></li>
                 <li class=""><a href="{% url 'blog_index' dn %}">博客</a></li>
-                <li class=""><a href="{% url 'research_index' dn %}">科研</a></li>
+{#                <li class=""><a href="{% url 'research_index' dn %}">科研</a></li>#}
                 <li class=""><a href="{% url 'assignment_index' %}">作业</a></li>
                 <li class=""><a href="{% url 'src_index' %}">资源</a></li>
 {#                <li class=""><a href="">发现</a></li>#}
@@ -23,8 +23,8 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="">
-                        <a style="color:#5bc0de;" href="{% url 'user_profile' user.id %}">{{ user.username }} <span
-                                class="badge">42</span></a>
+                        <a style="" href="{% url 'user_profile' user.id %}">{{ user.username }} <span
+                                class="badge"></span></a>
                     </li>
                     <li class="">
                         <a href="{% url 'logout' %}"><img src="/static/images/logout.png"></a>

@@ -3,23 +3,31 @@
 {% block main %}
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            {% if user.is_authenticated %}
+                <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
                 <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <p><input name="title" type="text" class="form-control" placeholder="文件标题、描述（必填）"></p>
+                    <p><input name="x:title" type="text" class="form-control" placeholder="文件描述(必填)"
+                              style="border-color: red"></p>
 
                     <p><input name="token" type="hidden" value="{{ token }}"></p>
 
                     <p><input name="file" type="file" class="form-control"></p>
 
-                    <input type="submit" value="upload" class="btn-info form-control" style="width: 100px">
+                    <input type="submit" value="上传" class="btn-info form-control" style="width: 100px;float: right">
                 </form>
             </div>
+            {% else %}
+                <div>
+                <p>请先登录</p>
+                </div>
+            {% endif %}
         </div>
     </div>
-    <script>
-        var editor = new Simditor({
-            textarea: $('#editor')
-        });
-    </script>
+
 {% endblock %}

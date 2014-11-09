@@ -33,8 +33,7 @@ def write_blog(request,dn):
 def blog_view(request,dn,blog_id):
     d = department.objects.get(name=dn)
     b = blogs.objects.get(id=blog_id)
-    if not request.user == b.auth:
-        b.click += 1
+    b.click += 1
     b.save()
     br = breply.objects.filter(topic=blog_id)
     return render_to_response('blog/view.html',{'user':request.user,
@@ -75,7 +74,7 @@ def del_blog(request,dn,blog_id):
     if request.user==b.auth:
         b.deleted = True
         b.save()
-        messages.add_message(request,messages.SUCCESS,_(u'删除成功，若要恢复请联系我们 !'))
+        messages.add_message(request,messages.SUCCESS,_(u'删除成功 !'))
     else:
         messages.add_message(request,messages.WARNING,_(u'删除失败，你不是这篇博客的作者 !'))
     return HttpResponseRedirect(reverse('blog_index',kwargs={'dn':dn}))

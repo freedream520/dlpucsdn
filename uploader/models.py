@@ -8,3 +8,5 @@ class files(models.Model):
     title = models.TextField()
     url = models.URLField(default='')
     upload_time = models.DateTimeField(auto_now_add=True)
+    class Meta():
+        ordering = ['-upload_time']

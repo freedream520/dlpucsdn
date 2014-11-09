@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block nav %}{% include 'nav.html' %}{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <p><a class="btn-green" href="{% url 'upload_file' %}">上传文件</a></p>
+                <div class="alert alert-info">
+                    如要【复制下载链接】请【右键超链接】，点击【复制链接地址】
+                </div>
+                <div>
+                {% autopaginate file 30 %}
+                    {% for f in file %}
+                        <p><span style="color: #c0c0c0">{{ f.auth }} : </span><a href="{{ f.url }}">{{ f.title }}</a><span style="color: #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;{{ f.upload_time }}</span></p>
+                    {% endfor %}
+                <div style="text-align: center;margin-top: -10px">
+                    {% paginate %}
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor')
+        });
+    </script>
+{% endblock %}
