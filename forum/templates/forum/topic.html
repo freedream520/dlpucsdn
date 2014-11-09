@@ -27,8 +27,8 @@
                                 class="label label-default">点击({{ topics.click }}) </span> <span
                                 class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
                             {% if topics.auth == request.user %}
-{#                                <a href="" style="text-decoration: none"><span#}
-{#                                        class="label label-success glyphicon glyphicon-pencil">补充</span></a>#}
+                                {#                                <a href="" style="text-decoration: none"><span#}
+                                {#                                        class="label label-success glyphicon glyphicon-pencil">补充</span></a>#}
                                 <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
                                         class="label label-danger glyphicon glyphicon-trash">delete</span></a>
                             {% endif %}
@@ -44,7 +44,8 @@
                         {% for r in reply %}
                             <div class="list-group-item">
                                 <div class="row">
-                                    <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1" style="margin-top: 10px">
+                                    <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1"
+                                       style="margin-top: 10px">
                                         <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
                                              class="img-circle">
                                     </a>
@@ -82,6 +83,10 @@
                                     style="margin-top: 10px;width: 100px">提交
                             </button>
                         </form>
+                    </div>
+                {% else %}
+                    <div>
+                    <p> 请 <a href="{% url 'login' %}">登录</a> 参与评论</p>
                     </div>
                 {% endif %}
             </div>

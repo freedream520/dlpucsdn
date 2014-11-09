@@ -92,7 +92,7 @@ def user_logout(request):
 def index(request):
     return render_to_response('index.html', {'user': request.user,
                                              'request': request,
-                                             'title': u'大连工业大学CSDN俱乐部--We run cool events'},
+                                             'title': u'大连工业大学CSDN高校俱乐部'},
                               context_instance=RequestContext(request))
 
 

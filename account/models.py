@@ -9,7 +9,7 @@ class profile(models.Model):
     number = models.IntegerField(max_length=15,blank=True,null=True)
     identity = models.IntegerField(default=0)
     deleted = models.BooleanField(default=False)
-    website = models.URLField(default="")
+    website = models.URLField(default="#")
     head = models.URLField(default='http://dlpucsdn.qiniudn.com/default.png')
     def __unicode__(self):
         return self.user

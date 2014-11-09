@@ -36,7 +36,7 @@ def receive_url(request):
             try:
                 fileInfo = json.loads(base64.decodestring(ret))
             except:
-                messages.add_message(request,messages.WARNING,u'上传出错，请尝试缩短文件描述')
+                messages.add_message(request,messages.WARNING,u'上传出错，请尝试缩短或修改文件描述，并重新上传文件')
                 return HttpResponseRedirect(reverse('upload_file'))
             key = fileInfo['key']
             title = fileInfo['x:title']

@@ -18,7 +18,7 @@
                 <div>
                 {% autopaginate file 30 %}
                     {% for f in file %}
-                        <p><span style="color: #c0c0c0">{{ f.auth }} : </span><a href="{{ f.url }}">{{ f.title }}</a><span style="color: #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;{{ f.upload_time }}</span></p>
+                        <p><span style="color: #c0c0c0">{{ f.auth }} : </span><a href="{{ f.url }}" target="_blank">{{ f.title }}</a><span style="color: #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;{{ f.upload_time }}</span></p>
                     {% endfor %}
                 <div style="text-align: center;margin-top: -10px">
                     {% paginate %}
