@@ -21,8 +21,7 @@
 #count {
     color: #ffffff;
     background-color: #c0c0c0;
-    padding: 1px 3px 1px 3px;
-    margin-top: 5px;
+    padding: 2px 3px 2px 3px;
     -moz-border-radius: 0.2em;
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
@@ -75,3 +74,4 @@ a:hover {
 .blog a:hover{
     color: #D73C31;
 }
+

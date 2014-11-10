@@ -15,13 +15,9 @@
                             <div class="panel-body">
                                 <div>
                                     <p>用户名&nbsp;:&nbsp;{{ p.username }}</p>
-
                                     <p>学号&nbsp;:&nbsp;{{ p.profile.number }}</p>
-
                                     <p>Email&nbsp;:&nbsp;{{ p.email }}</p>
-
-                                    <p>个人主页&nbsp;:&nbsp;<a target="_blank"
-                                                           href="{{ p.profile.website }}">{{ p.profile.website }}</a>
+                                    <p>个人主页&nbsp;:&nbsp;<a href="{{ p.profile.website }}">{{ p.profile.website }}</a>
                                     </p>
                                     {% if user.is_authenticated %}
                                         {% if request.user == p %}

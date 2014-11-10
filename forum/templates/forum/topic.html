@@ -8,19 +8,20 @@
                 <div class="list-group">
                     <div class="list-group-item">
                         <div class="row">
-                            <div class="col-md-11 col-sm-10 col-xs-10">
+
+                            <div class="col-md-10 col-sm-10 col-xs-9">
                                 <div class="text-info"
                                      style="font-size: 25px;border-bottom: 1px #dcdcdc solid;padding-bottom: 10px">{{ topics.title }}</div>
                             </div>
-                            <div class="pull-right" style="margin-right: 10px">
+                            <div class="col-md-2 col-sm-2 col-xs-3">
                                 <a href="{% url 'user_profile' topics.auth.id %}">
-                                    <img src="{{ topics.auth.profile.head }}" height="50px" width="50px"
+                                    <img src="{{ topics.auth.profile.head }}" height="60px" width="60px"
                                          class="img-rounded">
                                 </a>
                             </div>
                         </div>
-                        <div style="margin-top: 10px;font-size: 16px">{{ topics.content | safe }}</div>
-                        <div style="margin-top: 30px">
+                        <div style="margin-top: 10px;font-size: 16px;line-height: 1.4">{{ topics.content | safe }}</div>
+                        <div style="margin-top: 10px">
                             <a href="{% url 'user_profile' topics.auth.id %}" class="label label-primary"
                                style="">{{ topics.auth }}</a>
                             <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
@@ -37,38 +38,38 @@
                 </div>
                 <div class="panel panel-default ">
                     <div class="panel-heading">
-                        <span style="font-size: 18px">共有{{ topics.reply_count }}条回复</span>
-
+                        <span style="font-size: 15px">共有{{ topics.reply_count }}条回复</span>
                     </div>
                     <ul class="list-group">
                         {% for r in reply %}
                             <div class="list-group-item">
                                 <div class="row">
-                                    <a href="{% url 'user_profile' r.auth.id %}" class="col-sm-2 col-xs-2 col-md-1"
-                                       style="margin-top: 10px">
-                                        <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
-                                             class="img-circle">
-                                    </a>
+                                    <div class="col-md-1 col-sm-1 col-xs-2">
+                                        <a href="{% url 'user_profile' r.auth.id %}"
+                                           style="margin-top: 10px">
+                                            <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
+                                                 class="img-circle">
+                                        </a>
+                                    </div>
 
-                                    <div class="col-sm-9 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px">
-                                        <div style="max-height: 800px;overflow-y: auto">
+                                    <div class="col-md-11 col-sm-11 col-xs-10">
+                                        <div style="line-height: 1.2">
                                             {{ r.content | safe }}
                                         </div>
-                                        <div style="margin-top: 30px">
+                                        <div style="margin-top: 10px">
                                             <span></span>
                                             <span id="count"><a
-                                                    href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a></span><span
-                                                id="count"
-                                                style="margin-left: 5px">{{ r.time_created | naturaltime }}</span><a
-                                                style="margin-left: 5px" href="" class="label label-info "></a>
-
+                                                    href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a>
+                                            </span>
+                                            <span id="count"
+                                                  style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
+                                            <a style="margin-left: 5px" href="" class="label label-info "></a>
+                                            <a class="label label-info" data-user="{{ r.auth.username }}"
+                                               data-url="{% url 'user_profile' r.auth.id %}"
+                                               href="#content">reply</a>
                                         </div>
                                     </div>
-                                    <div class="pull-right" style="margin-right: 10px;margin-top: 10px">
-                                        <a class="label label-info reply-btn" data-user="{{ r.auth.username }}"
-                                           data-url="{% url 'user_profile' r.auth.id %}"
-                                           href="#content">reply</a>
-                                    </div>
+
                                 </div>
                             </div>
                         {% endfor %}
@@ -97,6 +98,7 @@
         var editor = new Simditor({
             textarea: $('#editor')
         });
+        editor.focus();
         $('.reply-btn').click(
                 function () {
                     var user = $(this).data('user');
