@@ -18,6 +18,7 @@ qiniu.conf.SECRET_KEY="jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru"
 def upload_file(request):
     file = qiniu.rs.PutPolicy('dlpucsdn')
     file.returnUrl = "http://127.0.0.1:8000/src/receive"
+    file.saveKey = "$(fname)"
     token = file.token()
     extra = qiniu.io.PutExtra()
     extra.mime_type = "text/plain"

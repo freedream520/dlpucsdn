@@ -52,6 +52,10 @@ def user_signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
+        if len(username) < 6:
+            messages.add_message(request, messages.WARNING, _(u'用户名长度不能少于6位，请重新输入'))
+            return render_to_response('account/signup.html',
+                                      context_instance=RequestContext(request))
         if not len(number) == 10:
             messages.add_message(request, messages.WARNING, _(u'输入的学号有误，请重新输入'))
             return render_to_response('account/signup.html',
