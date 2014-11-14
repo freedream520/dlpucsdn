@@ -75,6 +75,7 @@ def user_signup(request):
         if password1 == password2:
             user = User.objects.create_user(username=username, password=password1,email=email)
             u = authenticate(username=username, password=password1)
+            messages.add_message(request, messages.WARNING, _(u'注册成功'))
         else:
             messages.add_message(request, messages.WARNING, _(u'密码不一致，请重新输入'))
             return render_to_response('account/signup.html',
@@ -190,6 +191,7 @@ def user_head(request):
     return HttpResponseRedirect(reverse('user_profile', kwargs={'user_id': request.user.id}))
 
 
-def edit_profile(request):
+def edit_profile(request,user_id):
     return render_to_response('account/edit.html',{'request':request,
+                                                   'user_id':user_id,
                                                    'user':request.user})

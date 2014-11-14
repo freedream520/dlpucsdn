@@ -46,28 +46,31 @@
                                 <div class="row">
                                     <div class="col-md-1 col-sm-1 col-xs-2">
                                         <a href="{% url 'user_profile' r.auth.id %}"
-                                           style="margin-top: 10px">
+                                                >
                                             <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
                                                  class="img-circle">
                                         </a>
                                     </div>
 
                                     <div class="col-md-11 col-sm-11 col-xs-10">
-                                        <div style="line-height: 1.2">
-                                            {{ r.content | safe }}
-                                        </div>
-                                        <div style="margin-top: 10px">
+                                        <div style="">
                                             <span></span>
-                                            <span id="count"><a
+                                            <span id="count" class="label"><a
                                                     href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a>
                                             </span>
-                                            <span id="count"
+                                            <span id="count" class="label"
                                                   style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
                                             <a style="margin-left: 5px" href="" class="label label-info "></a>
-                                            <a class="label label-info" data-user="{{ r.auth.username }}"
+                                        </div>
+                                        <div style="line-height: 1.4;margin-top: 10px">
+                                            {{ r.content | safe }}
+                                        </div>
+                                        <div style="margin-top: 20px">
+                                            <a class="label label-info reply-btn" data-user="{{ r.auth.username }}"
                                                data-url="{% url 'user_profile' r.auth.id %}"
                                                href="#content">reply</a>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -80,7 +83,7 @@
                     <div class="list-group" id="content">
                         <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
                             {% csrf_token %}
-                            <textarea placeholder="评论" name="reply" class="form-control" id="editor"></textarea>
+                            <textarea placeholder="评论" name="reply" class="form-control area" id="editor"></textarea>
                             <button class="btn btn-success pull-right" type="submit"
                                     style="margin-top: 10px;width: 100px">提交
                             </button>
@@ -95,8 +98,15 @@
         </div>
     </div>
     <script>
+
         var editor = new Simditor({
-            textarea: $('#editor')
+            textarea: $('#editor'),
+            toolbar: ['title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image', '|'],
+            emoji: {
+                imagePath: '/static/images/emoji/'
+            },
+            defaultImage: '/static/images/loading-upload.gif'
+
         });
         editor.focus();
         $('.reply-btn').click(
@@ -104,7 +114,7 @@
                     var user = $(this).data('user');
                     var profile = $(this).data('url');
                     console.log(user);
-                    editor.setValue('<a href="' + profile + '">' + '@' + user + '&nbsp');
+                    editor.setValue('<a href="' + profile + '">' + '@' + user + '<' + '/a>' + '&nbsp');
                 }
         );
     </script>

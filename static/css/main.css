@@ -21,7 +21,7 @@
 #count {
     color: #ffffff;
     background-color: #c0c0c0;
-    padding: 2px 3px 2px 3px;
+    padding: 2px 2px 2px 3px;
     -moz-border-radius: 0.2em;
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
@@ -33,6 +33,9 @@
 
 #count a:hover {
     text-decoration: none;
+}
+#user{
+
 }
 a:hover {
     text-decoration: none;

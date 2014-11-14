@@ -101,7 +101,8 @@ hr {
 }
 pre {
     max-height: 400px;
-  overflow-y: auto;
+    overflow-y: auto;;
+    overflow-x: auto;
 }
 code,
 kbd,
@@ -1372,7 +1373,7 @@ pre {
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.1;
+  line-height: 1.3;
   color: #333;
   word-break: break-all;
   word-wrap: break-word;

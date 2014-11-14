@@ -21,7 +21,7 @@
                                     </p>
                                     {% if user.is_authenticated %}
                                         {% if request.user == p %}
-                                            <p><a href="{% url 'edit_profile' %}">修改个人资料</a></p>
+                                            <p><a href="{% url 'edit_profile' user_id %}">修改个人资料</a></p>
                                         {% endif %}
                                     {% endif %}
 

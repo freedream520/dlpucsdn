@@ -10,11 +10,15 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/simditor.css"/>
-    <script src="/static/js/jquery-2.1.1.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <script src="/static/js/module.js"></script>
-    <script src="/static/js/uploader.js"></script>
-    <script src="/static/js/simditor-all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/simditor-emoji.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/default.css">
+    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
+    <script type="text/javascript" src="/static/js/simditor-emoji.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/module.js"></script>
+    <script type="text/javascript" src="/static/js/uploader.js"></script>
+    <script type="text/javascript" src="/static/js/simditor-all.js"></script>
 
     <style>
         [touch-action="none"] {
@@ -63,7 +67,7 @@
         </div>
         <div>
             由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a href="http://digitalocean.com"
-                                                                        target="_blank">DigitalOcean</a>提供服务器
+                                                                         target="_blank">DigitalOcean</a>提供服务器
         </div>
         <div>
             <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
@@ -86,12 +90,14 @@
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-50554094-2', 'auto');
+    ga('require', 'displayfeatures');
     ga('send', 'pageview');
 
 </script>
 
 <script rel="stylesheet" type="text/javascript">
     $('.dropdown-toggle').dropdown();
+    hljs.initHighlightingOnLoad();
 </script>
 
 
