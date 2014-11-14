@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="dlpucsdn">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minmum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/simditor.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/simditor-emoji.css"/>
+    <link type="text/css" rel="stylesheet" href="static/css/default.css">
+    <script type="text/javascript" src="static/js/highlight.pack.js"></script>
+    <script type="text/javascript" src="static/js/simditor-emoji.js"></script>
+    <script type="text/javascript" src="static/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/js/module.js"></script>
+    <script type="text/javascript" src="static/js/uploader.js"></script>
+    <script type="text/javascript" src="static/js/simditor-all.js"></script>
+
+
+    <title>{{ title }}</title>
+</head>
+<body style="word-wrap: break-word;background-color: #F0F0F0;margin-top: 70px">
+
+ <div class="container">
+        <div class="row">
+            <div class="list-group" id="content">
+                        <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
+                            <textarea placeholder="评论" name="reply" class="form-control area" id="editor"></textarea>
+                            <button class="btn btn-success pull-right" type="submit"
+                                    style="margin-top: 10px;width: 100px">提交
+                            </button>
+                        </form>
+        </div>
+    </div>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            toolbar: ['title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image', '|'],
+            emoji: {
+                imagePath: '/static/images/emoji/'
+            },
+            defaultImage: '/static/images/loading-upload.gif'
+
+        });
+        editor.focus();
+        $('.reply-btn').click(
+                function () {
+                    var user = $(this).data('user');
+                    var profile = $(this).data('url');
+                    console.log(user);
+                    editor.setValue('<a href="' + profile + '">' + '@' + user + '<' + '/a>' + '&nbsp');
+                }
+        );
+    </script>
+
+
+
+</body>
+</html>
+   
