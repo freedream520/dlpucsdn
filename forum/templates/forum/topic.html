@@ -101,11 +101,12 @@
 
         var editor = new Simditor({
             textarea: $('#editor'),
-            toolbar: ['emoji','title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image', '|'],
+            toolbar: ['emoji', '|','title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image'],
             emoji: {
                 imagePath: '/static/images/emoji/'
             },
             defaultImage: '/static/images/loading-upload.gif'
+
         });
         editor.focus();
         $('.reply-btn').click(
