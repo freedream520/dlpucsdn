@@ -3,8 +3,9 @@
 {% load pagination_tags %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div class="container">
-        <div class="row">
+    <div style="background-image: url('/static/images/pixels.png');background-repeat: repeat;background-attachment: fixed;background-color: #99CCCC">
+    <div class="container" style="margin-top: -20px;margin-bottom: -650px">
+        <div class="row" style="margin-top: 20px;margin-bottom: 650px">
             <div class="col-md-8">
             {% if messages %}
                 {% for message in messages %}
@@ -12,15 +13,13 @@
                 {% endfor %}
             {% endif %}
             <div class="panel panel-default ">
-
                 <div class="panel-heading" style="background-color: #C6E5E9">
                     <span style="font-size: 18px">主题</span>
                     <a href="{% url 'create_topic' dn %}" class="btn btn-sm pull-right"
                        style="margin-top: -2px;background-color: #D73C31;color: #ffffff">新话题</a>
                 </div>
-
                 <ul class="list-group">
-                    {% autopaginate topics 30 %}
+                    {% autopaginate topics 10 %}
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
@@ -28,7 +27,6 @@
                                     <img src="{{ t.auth.profile.head }}" height="50px" width="50px"
                                          class="img-circle">
                                 </a>
-
                                 <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px;">
                                     <div class="forum-title"><a style="font-size: 18px;font: bold"
                                                                 href="{{ t.id }}">{{ t.title }}</a></div>
@@ -61,9 +59,8 @@
                     <a href="" class="label label-default">CS</a>
                 </div>
             </div>
-
         </div>
         </div>
     </div>
+    </div>
 {% endblock %}
-

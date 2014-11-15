@@ -13,10 +13,7 @@
                     <div class="alert alert-success">{{ message }}</div>
                 {% endfor %}
             {% endif %}
-            <div class="alert alert-warning" role="alert">
-                <p>注意！我们已不再支持IE6内核的浏览器，推荐使用谷歌或火狐浏览器，需要申请分区请直接联系作者。
-                </p>
-            </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: #C6E5E9">
                     前往&nbsp;-->&nbsp;社区
@@ -24,6 +21,7 @@
                 <div class="list-group">
                     <div class="list-group-item">
                         <span class="label btn-blue" style="padding: 8px;"></span>
+
                         <div class="btn-group dropdown">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 信息学院 <span class="caret"></span>
@@ -37,7 +35,8 @@
                             </ul>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle disabled"
+                                    data-toggle="dropdown">
                                 管理学院 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -50,7 +49,8 @@
                             </ul>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle disabled"
+                                    data-toggle="dropdown">
                                 艺术学院 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -61,7 +61,8 @@
                             </ul>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle disabled"
+                                    data-toggle="dropdown">
                                 服装学院 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -71,7 +72,8 @@
                             </ul>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle disabled"
+                                    data-toggle="dropdown">
                                 外语学院 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -81,7 +83,8 @@
                             </ul>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle disabled"
+                                    data-toggle="dropdown">
                                 社团 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -102,13 +105,36 @@
                     <div class="panel-heading" style="background-color: #C6E5E9">
                         Android和iOS端正在开发中...
                     </div>
+
                     <div class="panel-body" style="text-align: center">
-                    <img src="../static/images/qrcode.jpg" class="img-thumbnail"style="margin-bottom: 20px">
-                </div>
+                        <div class="alert alert-warning" role="alert">
+                            <p>注意！我们已不再支持IE6内核的浏览器，推荐使用谷歌或火狐浏览器，需要申请分区请直接联系作者。
+                            </p>
+                        </div>
+                        <img src="../static/images/qrcode.jpg" class="img-thumbnail" style="margin-bottom: 20px">
+                    </div>
                 </div>
 
 
             </div>
         </div>
     </div>
+
+<footer style="border-top: 1px solid #dcdcdc;padding-top: 10px;margin-top: 20px">
+    <div class="container" style="text-align: center;line-height: 2">
+
+        <div>
+            &copy;dlpucsdn.com 2013-2014
+            <a href="{% url 'about' %}">&nbsp;&nbsp;&nbsp;关于我们</a>
+            <a href="https://github.com/tcitry" target="_blank" style="margin-left: 10px;margin-right: 10px">联系作者</a>
+        </div>
+        <div>
+            由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a href="http://digitalocean.com"
+                                                                         target="_blank">DigitalOcean</a>提供服务器
+        </div>
+        <div>
+            <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
+        </div>
+    </div>
+</footer>
 {% endblock %}

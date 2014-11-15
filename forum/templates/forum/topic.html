@@ -2,98 +2,102 @@
 {% load humanize %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="list-group">
-                    <div class="list-group-item">
-                        <div class="row">
+    <div style="background-image: url('/static/images/pixels.png');background-repeat: repeat;background-attachment: fixed;background-color: #CCCCFF">
+        <div class="container" style="margin-top: -20px;margin-bottom: -300px">
+            <div class="row" style="margin-top: 20px;margin-bottom: 300px">
+                <div class="col-md-8">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="row">
 
-                            <div class="col-md-10 col-sm-10 col-xs-9">
-                                <div class="text-info"
-                                     style="font-size: 25px;border-bottom: 1px #dcdcdc solid;padding-bottom: 10px">{{ topics.title }}</div>
+                                <div class="col-md-10 col-sm-10 col-xs-9">
+                                    <div class="text-info"
+                                         style="font-size: 25px;border-bottom: 1px #dcdcdc solid;padding-bottom: 10px">{{ topics.title }}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-3">
+                                    <a href="{% url 'user_profile' topics.auth.id %}">
+                                        <img src="{{ topics.auth.profile.head }}" height="60px" width="60px"
+                                             class="img-rounded">
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-md-2 col-sm-2 col-xs-3">
-                                <a href="{% url 'user_profile' topics.auth.id %}">
-                                    <img src="{{ topics.auth.profile.head }}" height="60px" width="60px"
-                                         class="img-rounded">
-                                </a>
+                            <div style="margin-top: 10px;font-size: 16px;line-height: 1.4">{{ topics.content | safe }}</div>
+                            <div style="margin-top: 10px">
+                                <a href="{% url 'user_profile' topics.auth.id %}" class="label label-primary"
+                                   style="">{{ topics.auth }}</a>
+                                <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
+                                    class="label label-default">点击({{ topics.click }}) </span> <span
+                                    class="label label-default"
+                                    style="margin-left: 5px">评论({{ topics.reply_count }})</span>
+                                {% if topics.auth == request.user %}
+                                    {#                                <a href="" style="text-decoration: none"><span#}
+                                    {#                                        class="label label-success glyphicon glyphicon-pencil">补充</span></a>#}
+                                    <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
+                                            class="label label-danger glyphicon glyphicon-trash">delete</span></a>
+                                {% endif %}
                             </div>
                         </div>
-                        <div style="margin-top: 10px;font-size: 16px;line-height: 1.4">{{ topics.content | safe }}</div>
-                        <div style="margin-top: 10px">
-                            <a href="{% url 'user_profile' topics.auth.id %}" class="label label-primary"
-                               style="">{{ topics.auth }}</a>
-                            <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
-                                class="label label-default">点击({{ topics.click }}) </span> <span
-                                class="label label-default" style="margin-left: 5px">评论({{ topics.reply_count }})</span>
-                            {% if topics.auth == request.user %}
-                                {#                                <a href="" style="text-decoration: none"><span#}
-                                {#                                        class="label label-success glyphicon glyphicon-pencil">补充</span></a>#}
-                                <a href="{% url 'del_topic' dn topics.id %}" style="text-decoration: none"><span
-                                        class="label label-danger glyphicon glyphicon-trash">delete</span></a>
-                            {% endif %}
+                    </div>
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">
+                            <span style="font-size: 15px">共有{{ topics.reply_count }}条回复</span>
                         </div>
-                    </div>
-                </div>
-                <div class="panel panel-default ">
-                    <div class="panel-heading">
-                        <span style="font-size: 15px">共有{{ topics.reply_count }}条回复</span>
-                    </div>
-                    <ul class="list-group">
-                        {% for r in reply %}
-                            <div class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-1 col-sm-1 col-xs-2">
-                                        <a href="{% url 'user_profile' r.auth.id %}"
-                                                >
-                                            <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
-                                                 class="img-circle">
-                                        </a>
-                                    </div>
+                        <ul class="list-group">
+                            {% for r in reply %}
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-1 col-sm-1 col-xs-2">
+                                            <a href="{% url 'user_profile' r.auth.id %}"
+                                                    >
+                                                <img src="{{ r.auth.profile.head }}" height="50px" width="50px"
+                                                     class="img-circle">
+                                            </a>
+                                        </div>
 
-                                    <div class="col-md-11 col-sm-11 col-xs-10">
-                                        <div style="">
-                                            <span></span>
+                                        <div class="col-md-11 col-sm-11 col-xs-10">
+                                            <div style="">
+                                                <span></span>
                                             <span id="count" class="label"><a
                                                     href="{% url 'user_profile' r.auth.id %}">{{ r.auth }}</a>
                                             </span>
                                             <span id="count" class="label"
                                                   style="margin-left: 5px">{{ r.time_created | naturaltime }}</span>
-                                            <a style="margin-left: 5px" href="" class="label label-info "></a>
-                                        </div>
-                                        <div style="line-height: 1.4;margin-top: 10px">
-                                            {{ r.content | safe }}
-                                        </div>
-                                        <div style="margin-top: 20px">
-                                            <a class="label label-info reply-btn" data-user="{{ r.auth.username }}"
-                                               data-url="{% url 'user_profile' r.auth.id %}"
-                                               href="#content">reply</a>
+                                                <a style="margin-left: 5px" href="" class="label label-info "></a>
+                                            </div>
+                                            <div style="line-height: 1.4;margin-top: 10px">
+                                                {{ r.content | safe }}
+                                            </div>
+                                            <div style="margin-top: 20px">
+                                                <a class="label label-info reply-btn" data-user="{{ r.auth.username }}"
+                                                   data-url="{% url 'user_profile' r.auth.id %}"
+                                                   href="#content">reply</a>
+                                            </div>
+
                                         </div>
 
                                     </div>
-
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
 
-                    </ul>
+                        </ul>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="list-group" id="content">
+                            <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
+                                {% csrf_token %}
+                                <textarea placeholder="评论" name="reply" class="form-control area"
+                                          id="editor"></textarea>
+                                <button class="btn btn-success pull-right" type="submit"
+                                        style="margin-top: 10px;width: 100px">提交
+                                </button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div>
+                            <p> 请 <a href="{% url 'login' %}">登录</a> 参与评论</p>
+                        </div>
+                    {% endif %}
                 </div>
-                {% if user.is_authenticated %}
-                    <div class="list-group" id="content">
-                        <form role="form" method="post" action="{% url 'create_reply' dn topic_id %}">
-                            {% csrf_token %}
-                            <textarea placeholder="评论" name="reply" class="form-control area" id="editor"></textarea>
-                            <button class="btn btn-success pull-right" type="submit"
-                                    style="margin-top: 10px;width: 100px">提交
-                            </button>
-                        </form>
-                    </div>
-                {% else %}
-                    <div>
-                        <p> 请 <a href="{% url 'login' %}">登录</a> 参与评论</p>
-                    </div>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -101,7 +105,7 @@
 
         var editor = new Simditor({
             textarea: $('#editor'),
-            toolbar: ['emoji', '|','title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image'],
+            toolbar: ['title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image', 'emoji'],
             emoji: {
                 imagePath: '/static/images/emoji/'
             },

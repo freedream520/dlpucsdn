@@ -11,15 +11,13 @@
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/simditor.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/simditor-emoji.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/default.css">
     <script type="text/javascript" src="/static/js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
-    <script type="text/javascript" src="/static/js/module.js"></script>
     <script type="text/javascript" src="/static/js/uploader.js"></script>
+    <script type="text/javascript" src="/static/js/module.js"></script>
     <script type="text/javascript" src="/static/js/simditor.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
     <script type="text/javascript" src="/static/js/simditor-emoji.js"></script>
-    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
-
+    <script type="text/javascript" src="/static/js/unslider.js"></script>
     <style>
         [touch-action="none"] {
             -ms-touch-action: none;
@@ -45,7 +43,7 @@
 
     <title>{{ title }}</title>
 </head>
-<body style="word-wrap: break-word;background-color: #F0F0F0;margin-top: 70px">
+<body style="word-wrap: break-word;background-color: #E2E2E2;margin-top: 70px;">
 {% block nav %}{% endblock %}
 {% block pitch %}{% endblock %}
 {% block login %}{% endblock %}
@@ -57,23 +55,7 @@
 {% block assignment %}{% endblock %}
 {% block research %}{% endblock %}
 
-<footer style="border-top: 1px solid #dcdcdc;padding-top: 10px;margin-top: 20px">
-    <div class="container" style="text-align: center;line-height: 2">
 
-        <div>
-            &copy;dlpucsdn.com 2013-2014
-            <a href="{% url 'about' %}">&nbsp;&nbsp;&nbsp;关于我们</a>
-            <a href="https://github.com/tcitry" target="_blank" style="margin-left: 10px;margin-right: 10px">联系作者</a>
-        </div>
-        <div>
-            由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a href="http://digitalocean.com"
-                                                                         target="_blank">DigitalOcean</a>提供服务器
-        </div>
-        <div>
-            <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
-        </div>
-    </div>
-</footer>
 
 
 <script>

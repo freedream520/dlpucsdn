@@ -1,3 +1,6 @@
+*{
+    -webkit-font-smoothing: antialiased;
+}
 #pitch {
     background: url(/static/images/pitch/sunset.jpg);
     background-position: center;
@@ -11,7 +14,8 @@
 }
 
 #top a {
-    color: #428bca;
+    /*color: #428bca;*/
+    color: #D73C31;
 }
 
 #top a:hover {
@@ -26,7 +30,8 @@
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
 }
-#count a{
+
+#count a {
     cursor: pointer;
     color: #ffffff;
 }
@@ -34,47 +39,68 @@
 #count a:hover {
     text-decoration: none;
 }
-#user{
 
+#user {
 }
+
+.banner {
+    position: relative;
+    overflow: auto;
+}
+
+.banner li {
+    list-style: none;
+}
+
+.banner ul li {
+    float: left;
+}
+
 a:hover {
     text-decoration: none;
 }
 
-.btn-blue{
+.btn-blue {
     background-color: #5bc0de;
     color: #ffffff;
     font: bold;
 }
-.btn-red{
+
+.btn-red {
     margin: 5px;
     background-color: #D73C31;
     color: #ffffff;
     font: bold;
 }
-.btn-green{
+
+.btn-green {
     background-color: #C6E5E9;
     color: #ffffff;
     font: bold;
 }
-.btn-red:hover{
+
+.btn-red:hover {
     background-color: #F0AD4E;
     color: #ffffff;
-
 }
-.forum-title a:hover{
+
+.forum-title a:hover {
     color: #D73C31;
 }
-.news a{
+
+.news a {
     color: #245269;
 }
-.news a:hover{
+
+.news a:hover {
     color: #D73C31;
 }
-.news a:visited{
+
+.news a:visited {
     color: #9999CC;
 }
-.blog a:hover{
+
+.blog a:hover {
     color: #D73C31;
 }
 
