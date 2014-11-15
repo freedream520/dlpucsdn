@@ -3,9 +3,9 @@
 {% load pagination_tags %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div style="background-image: url('/static/images/pixels.png');background-repeat: repeat;background-attachment: fixed;background-color: #99CCCC">
-    <div class="container" style="margin-top: -20px;margin-bottom: -650px">
-        <div class="row" style="margin-top: 20px;margin-bottom: 650px">
+    <div style="background-image: url('/static/images/pixels.png');background-repeat: repeat;background-attachment: fixed;background-color: #99CCCC;min-height: 900px">
+    <div class="container" style="margin-top: -20px;margin-bottom: -40px">
+        <div class="row" style="margin-top: 20px;margin-bottom: 40px">
             <div class="col-md-8">
             {% if messages %}
                 {% for message in messages %}
@@ -19,7 +19,7 @@
                        style="margin-top: -2px;background-color: #D73C31;color: #ffffff">新话题</a>
                 </div>
                 <ul class="list-group">
-                    {% autopaginate topics 10 %}
+                    {% autopaginate topics 30 %}
                     {% for t in topics %}
                         <li class="list-group-item">
                             <div class="row">
