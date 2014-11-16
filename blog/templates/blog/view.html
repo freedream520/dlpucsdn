@@ -14,7 +14,7 @@
                 <div class="" style="background-color: transparent">
                     <div class="panel-body" style="">
                         <div>
-                            <div style="margin: 10px;width: 90%;border-bottom: 2px green solid">
+                            <div style="margin: 10px;border-bottom: 2px green solid">
                                 <h3 style="">{{ blog.title }}</h3>
                                 <div style="margin-top: 20px;padding-bottom: 10px">
                                     <a href="{% url 'user_profile' blog.auth.id %}" class="label label-primary" style="">{{ blog.auth }}</a>
@@ -75,7 +75,22 @@
     </div>
     <script>
         var editor = new Simditor({
-            textarea: $('#editor')
+            textarea: $('#editor'),
+            toolbar: ['title', 'bold', 'italic', 'underline', 'color', '|', 'ol', 'blockquote', 'code', '|', 'link', 'image', 'emoji'],
+            emoji: {
+                imagePath: '/static/images/emoji/'
+            },
+            defaultImage: '/static/images/loading-upload.gif'
+
         });
+        editor.focus();
+        $('.reply-btn').click(
+                function () {
+                    var user = $(this).data('user');
+                    var profile = $(this).data('url');
+                    console.log(user);
+                    editor.setValue('<a href="' + profile + '">' + '@' + user + '<' + '/a>' + '&nbsp');
+                }
+        );
     </script>
 {% endblock %}

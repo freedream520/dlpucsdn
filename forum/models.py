@@ -26,7 +26,6 @@ class topic(models.Model):
     def __unicode__(self):
         return self.title
 
-
 class reply(models.Model):
     auth = models.ForeignKey(User)
     topic = models.ForeignKey(topic)

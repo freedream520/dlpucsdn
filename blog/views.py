@@ -29,7 +29,6 @@ def write_blog(request,dn):
         messages.add_message(request,messages.WARNING,_(u'标题或内容不能为空！'))
         return HttpResponseRedirect(reverse('write_blog',kwargs={'dn':dn}))
 
-
 def blog_view(request,dn,blog_id):
     d = department.objects.get(name=dn)
     b = blogs.objects.get(id=blog_id)
