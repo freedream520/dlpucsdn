@@ -104,7 +104,6 @@ def index(request):
 def about(request):
     return render_to_response('about.html', )
 
-
 def user_profile(request, user_id):
     p = User.objects.get(id=user_id)
     file = qiniu.rs.PutPolicy('dlpucsdn')

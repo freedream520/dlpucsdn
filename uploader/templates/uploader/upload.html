@@ -4,33 +4,33 @@
     <div class="container">
         <div class="row">
             {% if user.is_authenticated %}
-                <div class="col-md-8">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-danger">{{ message }}</div>
-                        {% endfor %}
-                    {% endif %}
-                    <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p><input name="x:title" type="text" class="form-control" placeholder="文件描述(必填)"
-                                  style="border-color: red"></p>
+                <div class="col-md-6">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><input name="x:title" type="text" class="form-control" placeholder="文件描述(必填)"
+                              style="border-color: red"></p>
 
-{#                        <p><input name="key" type="hidden" value=""></p>#}
+                    {#                        <p><input name="key" type="hidden" value=""></p>#}
 
-                        <p><input name="accept" type="hidden"></p>
+                    <p><input name="accept" type="hidden"></p>
 
-                        <p><input name="token" type="hidden" value="{{ token }}"></p>
+                    <p><input name="token" type="hidden" value="{{ token }}"></p>
 
-                        <p><input name="file" type="file" class="form-control"></p>
+                    <p><input name="file" type="file" class="form-control"></p>
 
-                        <input type="submit" value="上传" class="btn-info form-control" style="width: 100px;float: right">
-                    </form>
-                </div>
+                    <input type="submit" value="上传" class="btn-info form-control" style="width: 100px;float: right">
+                </form>
             {% else %}
                 <div>
                     <p>请先登录</p>
                 </div>
             {% endif %}
+            </div>
         </div>
     </div>
 
