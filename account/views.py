@@ -1,4 +1,4 @@
-# coding=utf-8
+#coding=utf-8
 from django.shortcuts import render_to_response, RequestContext
 from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -19,7 +19,7 @@ import qiniu.io
 
 qiniu.conf.ACCESS_KEY = "vco8VEaZwm24oxn9btpSdjVUMGUe21-K049IlIbl"
 qiniu.conf.SECRET_KEY = "jTUDwXmbx8uzSG-jEXAfigbQN8Aj3Q3-K6eDU6Ru"
-# Create your views here.
+
 
 def user_login(request):
     if request.method == 'GET':
@@ -33,6 +33,7 @@ def user_login(request):
             messages.add_message(request, messages.WARNING, u'用户名不存在')
             return render_to_response('account/login.html', {'login': False},
                                       context_instance=RequestContext(request))
+
         elif not u:
             messages.add_message(request, messages.WARNING, u'用户名和密码不符')
             return render_to_response('account/login.html',
