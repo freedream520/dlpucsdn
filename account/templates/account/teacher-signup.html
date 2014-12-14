@@ -3,7 +3,8 @@
     {% include 'nav.html' %}
 {% endblock %}
 {% block signup %}
-    <div class="row" style="width: 350px;margin-left: auto;margin-right: auto;margin-top: 5%;margin-bottom: 20%;margin-top: 10%">
+    <div class="row"
+         style="width: 350px;margin-left: auto;margin-right: auto;margin-top: 5%;margin-bottom: 20%;margin-top: 10%">
 
         <form role="form" method="post" action="" style="margin-left: 5%;margin-right: 5%">
             {% if messages %}
@@ -11,6 +12,10 @@
                     <div class="alert alert-danger">{{ message }}</div>
                 {% endfor %}
             {% endif %}
+            <p>
+
+            <div class="alert alert-info">填写完邮箱地址后我们会发送一个链接到您的邮箱，打开链接后便可使用作业发布功能</div>
+            </p>
             {% csrf_token %}
             <p><input type="text" class="form-control" placeholder="用户名" name="username"></p>
 
@@ -26,10 +31,7 @@
 
             <p><input type="password" class="form-control" placeholder="确认密码" name="password2"></p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">教师注册</button>
-            <p>
 
-            <div class="alert alert-danger">填写完邮箱地址后我们会发送一个链接到您的邮箱，打开链接后便可使用作业发布功能</div>
-            </p>
         </form>
     </div>
 {% endblock %}

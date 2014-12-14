@@ -25,7 +25,7 @@
                             <div style="margin-top: 10px">
                                 <a href="{% url 'user_profile' topics.auth.id %}" class="label label-primary"
                                    style="">{{ topics.auth }}</a>
-                                <span class="label label-info">{{ topics.time_created | naturaltime }}</span> <span
+                                <span class="label label-info">{{ topics.time_created }}</span> <span
                                     class="label label-default">点击({{ topics.click }}) </span> <span
                                     class="label label-default"
                                     style="margin-left: 5px">评论({{ topics.reply_count }})</span>

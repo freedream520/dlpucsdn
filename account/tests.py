@@ -5,3 +5,4 @@ from django.test import TestCase
 
     # score = models.IntegerField(default=0)
     # phone = models.IntegerField(default=0)
+

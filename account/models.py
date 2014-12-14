@@ -12,6 +12,7 @@ class profile(models.Model):
     website = models.URLField(default="#")
     head = models.URLField(default='http://dlpucsdn.qiniudn.com/default.png')
 
+
     def __unicode__(self):
         return self.user
 
