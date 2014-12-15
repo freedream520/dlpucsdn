@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block nav %}
     {% include 'nav.html' %}
 {% endblock %}
@@ -16,7 +17,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: #C6E5E9">
-                    前往&nbsp;-->&nbsp;社区
+                    前往&nbsp;&raquo;&nbsp;社区
                 </div>
                 <div class="list-group nav">
                     <div class="list-group-item">
@@ -63,11 +64,43 @@
                                 <li><a href="/cs/">CSDN高校俱乐部</a></li>
                             </ul>
                         </div>
+
                     </div>
 
 
                 </div>
+
+
             </div>
+            <div class="panel panel-default">
+                <ul class="list-group">
+
+                    {% for t in topic %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <a href="{% url 'user_profile' t.auth.id %}" class="col-sm-1 col-xs-2 col-md-1">
+                                    <img src="{{ t.auth.profile.head }}" height="50px" width="50px"
+                                         class="img-circle">
+                                </a>
+
+                                <div class="col-sm-8 col-xs-8 col-md-10" style="margin-left: 5px;">
+                                    <div class="forum-title"><a style="font-size: 18px;"
+                                                                href="/{{ t.department_name.name }}/forum/{{ t.id }}">{{ t.title }}</a>
+                                    </div>
+                                    <div style="margin-top: 10px">
+                                        <span><a href="{% url 'user_profile' t.auth.id %}"
+                                                 style="text-decoration: none">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created | naturaltime }} </span><span>有({{ t.reply_count }})条评论</span>
+                                    </div>
+                                </div>
+                                <div class="pull-right" style="margin-right: 10px;margin-top: 10px">
+                                    <label class="label label-info">{{ t.click }}</label>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
         </div>
         <div class="col-md-3">
             <div>
@@ -84,28 +117,28 @@
                         <img src="../static/images/qrcode.jpg" class="img-thumbnail" style="margin-bottom: 20px">
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 
-<footer style="border-top: 1px solid #dcdcdc;padding-top: 10px;margin-top: 20px">
-    <div class="container" style="text-align: center;line-height: 2">
+    <footer style="border-top: 1px solid #dcdcdc;padding-top: 10px;margin-top: 20px">
+        <div class="container" style="text-align: center;line-height: 2">
 
-        <div>
-            &copy;dlpucsdn.com 2013-2014
-            <a href="{% url 'about' %}">&nbsp;&nbsp;&nbsp;关于我们</a>
-            <a href="https://github.com/tcitry" target="_blank" style="margin-left: 10px;margin-right: 10px">联系作者</a>
+            <div>
+                &copy;dlpucsdn.com 2013-2014
+                <a href="{% url 'about' %}">&nbsp;&nbsp;&nbsp;关于我们</a>
+                <a href="https://github.com/tcitry" target="_blank"
+                   style="margin-left: 10px;margin-right: 10px">联系作者</a>
+            </div>
+            <div>
+                由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a
+                    href="https://www.digitalocean.com/?refcode=691aa9b4866d"
+                    target="_blank">DigitalOcean</a>提供服务器
+            </div>
+            <div>
+                <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
+            </div>
         </div>
-        <div>
-            由<a href="http://qiniu.com" target="_blank">七牛云</a>提供静态存储，<a href="https://www.digitalocean.com/?refcode=691aa9b4866d"
-                                                                         target="_blank">DigitalOcean</a>提供服务器
-        </div>
-        <div>
-            <a href="http://www.csdn.net/" target="_blank"><img src="/static/images/csdn.png"></a>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 {% endblock %}

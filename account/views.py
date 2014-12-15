@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 from django.core.mail import send_mail, mail_admins
+from forum.models import topic
 import base64
 import json
 import sys
@@ -96,8 +97,10 @@ def user_logout(request):
 
 
 def index(request):
+    topics = topic.objects.all()[:10]
     return render_to_response('index.html', {'user': request.user,
                                              'request': request,
+                                             'topic':topics,
                                              'title': u'大连工业大学CSDN高校俱乐部'},
                               context_instance=RequestContext(request))
 
