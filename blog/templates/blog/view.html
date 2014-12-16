@@ -2,29 +2,31 @@
 {% load humanize %}
 {% block nav %}{% include 'navbar.html' %}{% endblock %}
 {% block main %}
-    <div class="container" >
+    <div class="container">
         <div class="row">
 
             <div class="col-md-8">
-             {% if messages %}
-            {% for message in messages %}
-                <p class="alert alert-danger">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-                <div class="" style="background-color: transparent">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert alert-danger">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                <div class="panel panel-default">
                     <div class="panel-body" style="">
                         <div>
                             <div style="margin: 10px;border-bottom: 2px green solid">
                                 <h3 style="">{{ blog.title }}</h3>
+
                                 <div style="margin-top: 20px;padding-bottom: 10px">
-                                    <a href="{% url 'user_profile' blog.auth.id %}" class="label label-primary" style="">{{ blog.auth }}</a>
+                                    <a href="{% url 'user_profile' blog.auth.id %}" class="label label-primary"
+                                       style="">{{ blog.auth }}</a>
                                     <span class="label label-info">{{ blog.time_created | naturaltime }}</span> <span
                                         class="label label-default">点击({{ blog.click }}) </span> <span
                                         class="label label-default"
                                         style="margin-left: 5px">评论({{ blog.reply_count }})</span>
                                     {% if blog.auth == request.user %}
-{#                                        <a href="" style="text-decoration: none"><span#}
-{#                                                class="label label-success">编辑</span></a>#}
+                                        {#   <a href="" style="text-decoration: none"><span#}
+                                        {#     class="label label-success">编辑</span></a>#}
                                         <a href="{% url 'del_blog' dn blog_id %}" style="text-decoration: none"><span
                                                 class="label label-danger">delete</span></a>
                                     {% endif %}
@@ -36,11 +38,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-success" style="margin-left: 20px;margin-right: 20px">
+                <div class="panel panel-info" >
                     <div class="panel-heading">
                         有{{ blog.reply_count }}条评论
                     </div>
-                    <div class="list-group">
+                    <ul class="list-group">
                         {% for br in breply %}
                             <div class="list-group-item">
                                 <div class="row">
@@ -48,7 +50,9 @@
                                         <img src="{{ br.auth.profile.head }}" height="50px" width="50px"
                                              class="img-circle">
                                     </a>
-                                    <div class="col-sm-10 col-xs-9 col-md-10" style="margin-left: 5px;margin-top: 10px;">
+
+                                    <div class="col-sm-10 col-xs-9 col-md-10"
+                                         style="margin-left: 5px;margin-top: 10px;">
                                         {{ br.content | safe }}
                                         <div style="margin-top: 30px">
                                             <span id="count"><a href="">{{ br.auth }}</a></span><span
@@ -59,16 +63,23 @@
                                 </div>
                             </div>
                         {% endfor %}
-
+                    </ul>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="list-group " style="">
+                        <form role="form" method="post" action="{% url 'create_breply' dn blog_id %}">
+                            {% csrf_token %}
+                            <textarea placeholder="评论" name="content" class="form-control" id="editor"></textarea>
+                            <button class="btn btn-success pull-right" type="submit"
+                                    style="margin-top: 10px;width: 100px;margin-bottom: 20px;">提交
+                            </button>
+                        </form>
                     </div>
-                </div>
-                <div class="list-group " style="margin-left: 20px;margin-right: 20px">
-                    <form role="form" method="post" action="{% url 'create_breply' dn blog_id %}">
-                        {% csrf_token %}
-                        <textarea placeholder="评论" name="content" class="form-control" id="editor"></textarea>
-                        <button class="btn btn-success pull-right" type="submit" style="margin-top: 10px;width: 100px">提交</button>
-                    </form>
-                </div>
+                {% else %}
+                    <div>
+                        <p> 请 <a href="{% url 'login' %}">登录</a> 参与评论</p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

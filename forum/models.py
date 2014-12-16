@@ -3,12 +3,6 @@ from account.models import department
 import re
 from django.contrib.auth.models import User
 # Create your models here.
-class node(models.Model):
-    name = models.CharField(max_length=20)
-    description = models.TextField(blank=True,null=True)
-    def __unicode__(self):
-        return self.name
-
 class topic(models.Model):
     auth = models.ForeignKey(User)
     title = models.CharField(max_length=100)

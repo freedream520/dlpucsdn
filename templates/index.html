@@ -89,7 +89,7 @@
                                     </div>
                                     <div style="margin-top: 10px">
                                         <span><a href="{% url 'user_profile' t.auth.id %}"
-                                                 style="text-decoration: none">{{ t.auth }} </a></span><span>创建于</span><span>{{ t.time_created | naturaltime }} </span><span>有({{ t.reply_count }})条评论</span>
+                                                 style="text-decoration: none">{{ t.auth }} </a> 创建于 {{ t.time_created | naturaltime }} 有({{ t.reply_count }})条评论 来自</span><span class="" id="count"><a href="{{ t.department_name.name }}">{{ t.department_name }}</a></span>
                                     </div>
                                 </div>
                                 <div class="pull-right" style="margin-right: 10px;margin-top: 10px">

@@ -97,7 +97,7 @@ def user_logout(request):
 
 
 def index(request):
-    topics = topic.objects.all()[:10]
+    topics = topic.objects.filter(deleted = False)[:20]
     return render_to_response('index.html', {'user': request.user,
                                              'request': request,
                                              'topic':topics,
